@@ -12,6 +12,42 @@ const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8492338050:AAFWOWRrc_kAd8hc
 const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
 const WEBSITE_URL = 'https://abduvoitov11.github.io/focus-media-toshkent/';
 const ADMIN_USERNAME = 'Torabek_Abduvoitov';
+const ADMIN_CHAT_ID = '6291811673';
+const APPEALS_FILE = '/tmp/focus_media_appeals.json';
+
+let botAppeals = [];
+try {
+  if (fs.existsSync(APPEALS_FILE)) {
+    botAppeals = JSON.parse(fs.readFileSync(APPEALS_FILE, 'utf8') || '[]');
+  }
+} catch (_) {}
+
+function recordAppeal(ticketNum, from, text) {
+  const appealObj = {
+    ticket: `№ FM-${ticketNum}`,
+    id: from?.id,
+    name: [from?.first_name, from?.last_name].filter(Boolean).join(' ') || 'Foydalanuvchi',
+    username: from?.username ? `@${from.username}` : 'Mavjud emas',
+    text: text,
+    time: new Date().toISOString()
+  };
+  botAppeals.unshift(appealObj);
+  if (botAppeals.length > 50) botAppeals = botAppeals.slice(0, 50);
+  try {
+    fs.writeFileSync(APPEALS_FILE, JSON.stringify(botAppeals));
+  } catch (_) {}
+  return appealObj;
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 const BANNER_FILE_ID = 'AgACAgIAAxkDAAOSatuiVM3SONzQqHsSZ0Pk4r4X_qAAAsEvaxtrBuBKwCJK72G3XhQBAAMCAAN4AAM9BA';
 
 // ----------------------------------------------------------------------------
@@ -222,47 +258,47 @@ const DISTRICTS_DATA = {
   ohangaron_t: { name: 'Ohangaron tumani', schools: '29 ta', model: '10-sonli umumta’lim maktabi', type: 'Tog‘-kon va chorvachilik' }
 };
 
-// Main Reply Keyboard (Clean Pure Uzbek, No Static Emojis, Native Premium Icons & Style)
+// Main Reply Keyboard (Sodda va jiddiy o'zbekcha yozuvlar)
 const MAIN_KEYBOARD = {
   keyboard: [
     [
-      { text: 'Haftalik Yangiliklar', icon_custom_emoji_id: TG_ICONS.NEWS, style: 'primary' },
-      { text: '«Kiber-Qalqon»', icon_custom_emoji_id: TG_ICONS.SHIELD, style: 'success' }
+      { text: 'Haftalik Yangiliklar' },
+      { text: 'Loyiha Taqdimoti' }
     ],
     [
-      { text: 'Viloyat Iftixorlari', icon_custom_emoji_id: TG_ICONS.TROPHY, style: 'primary' },
-      { text: '«Focus Suhbat»', icon_custom_emoji_id: TG_ICONS.STUDIO_MIC, style: 'primary' }
+      { text: 'Viloyat Iftixorlari' },
+      { text: '«Focus Suhbat»' }
     ],
     [
-      { text: '22 Ta Tuman Maktablari', icon_custom_emoji_id: TG_ICONS.MAP, style: 'primary' },
-      { text: 'Murojaat Yo‘llash', icon_custom_emoji_id: TG_ICONS.WRITE, style: 'primary' }
+      { text: '22 Ta Tuman Maktablari' },
+      { text: 'Murojaat Yo‘llash' }
     ],
     [
-      { text: 'Rasmiy Vebsayt', icon_custom_emoji_id: TG_ICONS.GLOBE, style: 'primary' },
-      { text: 'Loyiha Haqida', icon_custom_emoji_id: TG_ICONS.TARGET, style: 'primary' }
+      { text: 'Rasmiy Vebsayt' },
+      { text: 'Loyiha Haqida' }
     ]
   ],
   resize_keyboard: true,
-  is_persistent: true
+  is_persistent: false
 };
 
-// Master 8-Button Inline Menu (In-Place Interactive Navigation)
+// Master 8-Button Inline Menu (In-Place Interactive Navigation — Barcha amallar o'z joyida almashadi)
 const MASTER_INLINE_MENU = [
   [
-    { text: 'Haftalik Yangiliklar', callback_data: 'nav_news', icon_custom_emoji_id: TG_ICONS.NEWS, style: 'primary' },
-    { text: '«Kiber-Qalqon»', callback_data: 'nav_cyber', icon_custom_emoji_id: TG_ICONS.SHIELD, style: 'success' }
+    { text: 'Haftalik Yangiliklar', callback_data: 'nav_news' },
+    { text: 'Loyiha Taqdimoti', callback_data: 'nav_presentation' }
   ],
   [
-    { text: 'Viloyat Iftixorlari', callback_data: 'nav_heroes', icon_custom_emoji_id: TG_ICONS.TROPHY, style: 'primary' },
-    { text: '«Focus Suhbat»', callback_data: 'nav_podcast', icon_custom_emoji_id: TG_ICONS.STUDIO_MIC, style: 'primary' }
+    { text: 'Viloyat Iftixorlari', callback_data: 'nav_heroes' },
+    { text: '«Focus Suhbat»', callback_data: 'nav_podcast' }
   ],
   [
-    { text: '22 Ta Tuman', callback_data: 'nav_districts', icon_custom_emoji_id: TG_ICONS.MAP, style: 'primary' },
-    { text: 'Murojaat Yo‘llash', callback_data: 'nav_murojaat', icon_custom_emoji_id: TG_ICONS.WRITE, style: 'primary' }
+    { text: '22 Ta Tuman Maktablari', callback_data: 'nav_districts' },
+    { text: 'Murojaat Yo‘llash', callback_data: 'nav_murojaat' }
   ],
   [
-    { text: 'Rasmiy Vebsayt', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.GLOBE, style: 'primary' },
-    { text: 'Loyiha Haqida', callback_data: 'nav_about', icon_custom_emoji_id: TG_ICONS.TARGET, style: 'primary' }
+    { text: 'Rasmiy Vebsayt', url: WEBSITE_URL },
+    { text: 'Loyiha Haqida', callback_data: 'nav_about' }
   ]
 ];
 
@@ -375,13 +411,7 @@ async function sendWelcome(chatId, fromName, messageId = null, isPhoto = false) 
     }
   }
 
-  // Ensure Reply Keyboard is active
-  await callTelegram('sendMessage', {
-    chat_id: chatId,
-    text: `${EMJ.CHECK} <i>Tezkor navigatsiya menyusi faollashtirildi:</i>`,
-    parse_mode: 'HTML',
-    reply_markup: MAIN_KEYBOARD
-  });
+  // Single card mode: Chatni to'ldirmaslik uchun barcha menyu inline tugmalarda ishlaydi.
 }
 
 async function sendNews(chatId, messageId = null, isPhoto = false) {
@@ -400,21 +430,23 @@ async function sendNews(chatId, messageId = null, isPhoto = false) {
   await renderOrEdit(chatId, messageId, isPhoto, news, kb);
 }
 
-async function sendCyber(chatId, messageId = null, isPhoto = false) {
-  const cyber = `${EMJ.SHIELD} <b>«Kiber-Qalqon» — Internetda Xavfsizlik Madaniyati</b> ${EMJ.ALERT}\n\n` +
-                `O‘quvchilar, ustozlar va ota-onalar uchun internet tarmog‘ida xavfsiz bo‘lishning 4 muhim qoidasi:\n\n` +
-                `${EMJ.NUM_1} <b>Shaxsiy ma’lumotlarni asrang:</b> Bank kartalari, SMS-kodlar va parollarni begona guruh yoki botlarga kiritmang ${EMJ.LOCK}\n\n` +
-                `${EMJ.NUM_2} <b>Soxta havolalardan ehtiyot bo‘ling:</b> «Katta pul yutug‘i», «Sovg‘alar» mazmunidagi shubhali havolalarni ochmang ${EMJ.DANGER}\n\n` +
-                `${EMJ.NUM_3} <b>Fikr filtrlari va feyk xabarlar:</b> Shov-shuvli xabarlarni faqat rasmiy davlat va ta’lim kanallaridan tekshiring ${EMJ.IDEA}\n\n` +
-                `${EMJ.NUM_4} <b>Yot mafkuraviy guruhlardan saqlaning:</b> Ijtimoiy tarmoqlardagi noma’lum kimsalar bilan xavfli muloqotga kirmang ${EMJ.SHIELD}\n\n` +
-                `${EMJ.CHECK} <i>«Kiber-Qalqon» — viloyat yoshlarining mustahkam raqamli himoyasidir!</i>`;
+async function sendPresentation(chatId, messageId = null, isPhoto = false) {
+  const pres = `${EMJ.TARGET} <b>«Focus Media» — 5 Asosiy Slayd Taqdimoti</b> ${EMJ.SPARKLES}\n\n` +
+               `Toshkent viloyati rahbariyati uchun loyiha konsepsiyasining aniq va tizimli bayoni:\n\n` +
+               `${EMJ.NUM_1} <b>1-slayd. Loyiha Pasporti:</b> 22 ta tuman va 900+ maktabda media yetakchilarining yagona tizimi.\n\n` +
+               `${EMJ.NUM_2} <b>2-slayd. Muammo va Tahlil:</b> Maktablarda axborot tarqoqligi, media-faoliyatning sustligi va tizimsizlik.\n\n` +
+               `${EMJ.NUM_3} <b>3-slayd. Bizning Yechim:</b> Har bir maktabda media yetakchi, professional yo‘naltirilgan ta’lim va raqamli monitoring.\n\n` +
+               `${EMJ.NUM_4} <b>4-slayd. 5 Bosqichli Reja:</b> Kadrlar saralash, amaliy o‘quvlar, media-burchaklar jihozlash, kontent ishlab chiqarish va viloyat forumi.\n\n` +
+               `${EMJ.NUM_5} <b>5-slayd. Kutilayotgan Natija:</b> Iqtidorli yoshlar maydoni, viloyat ta’lim brendi va ochiq ma’rifiy platforma.\n\n` +
+               `${EMJ.CHECK} <i>Taqdimot slaydlarini to‘liq ko‘rish uchun rasmiy vebsaytga o‘ting:</i>`;
 
   const kb = [
-    [{ text: 'Murojaat yo‘llash', callback_data: 'nav_murojaat', icon_custom_emoji_id: TG_ICONS.WRITE, style: 'primary' }],
-    [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home', icon_custom_emoji_id: TG_ICONS.HOME, style: 'primary' }]
+    [{ text: 'Rasmiy Vebsaytda Ko‘rish', url: WEBSITE_URL }],
+    [{ text: 'Murojaat yo‘llash', callback_data: 'nav_murojaat' }],
+    [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home' }]
   ];
 
-  await renderOrEdit(chatId, messageId, isPhoto, cyber, kb);
+  await renderOrEdit(chatId, messageId, isPhoto, pres, kb);
 }
 
 async function sendHeroes(chatId, messageId = null, isPhoto = false) {
@@ -558,8 +590,8 @@ async function handleUpdate(update) {
       return;
     }
 
-    if (data === 'nav_cyber') {
-      await sendCyber(chatId, messageId, isPhoto);
+    if (data === 'nav_presentation' || data === 'nav_cyber') {
+      await sendPresentation(chatId, messageId, isPhoto);
       return;
     }
 
@@ -648,16 +680,73 @@ async function handleUpdate(update) {
     if (text === '/stat' || text === '/admin' || text === '/users') {
       const count = getUserCount();
       const list = Object.values(botUsers)
-        .map((u, i) => `${i + 1}. <b>${u.name}</b> (${u.username}) [<code>${u.id}</code>]`)
+        .map((u, i) => `${i + 1}. <b>${escapeHtml(u.name)}</b> (${u.username}) [<code>${u.id}</code>]`)
         .join('\n');
       const statText = `📊 <b>«Focus Media» Bot Statistikasi</b>\n\n` +
-                       `👥 <b>Jami start bosgan foydalanuvchilar:</b> ${count} ta\n\n` +
+                       `👥 <b>Jami start bosgan foydalanuvchilar:</b> ${count} ta\n` +
+                       `📩 <b>Jami kelib tushgan murojaatlar:</b> ${botAppeals.length} ta\n\n` +
                        `<b>Foydalanuvchilar ro‘yxati:</b>\n${list}\n\n` +
                        `${EMJ.CHECK} <i>Ma’lumotlar real vaqt rejimida yangilanadi.</i>`;
       await callTelegram('sendMessage', {
         chat_id: chatId,
         text: statText,
         parse_mode: 'HTML'
+      });
+      return;
+    }
+
+    // Admin Command: /murojaatlar, /appeals
+    if (text === '/murojaatlar' || text === '/appeals') {
+      if (chatId.toString() !== ADMIN_CHAT_ID) {
+        await callTelegram('sendMessage', {
+          chat_id: chatId,
+          text: '⛔ <i>Ushbu buyruq faqat loyiha rahbari uchun mo‘ljallangan.</i>',
+          parse_mode: 'HTML'
+        });
+        return;
+      }
+
+      if (!botAppeals || botAppeals.length === 0) {
+        await callTelegram('sendMessage', {
+          chat_id: chatId,
+          text: '📭 <i>Hozircha yangi murojaatlar kelib tushmagan.</i>',
+          parse_mode: 'HTML'
+        });
+        return;
+      }
+
+      const list = botAppeals.slice(0, 10).map((a, i) =>
+        `<b>${i + 1}. ${a.ticket}</b> — <b>${escapeHtml(a.name)}</b> (${a.username})\n` +
+        `📅 <code>${a.time.substring(0, 16).replace('T', ' ')}</code>\n` +
+        `💬 <i>«${escapeHtml(a.text.length > 90 ? a.text.substring(0, 87) + '...' : a.text)}»</i>`
+      ).join('\n\n');
+
+      await callTelegram('sendMessage', {
+        chat_id: chatId,
+        text: `📋 <b>Murojaatlar Jurnali (${botAppeals.length} ta):</b>\n\n${list}`,
+        parse_mode: 'HTML'
+      });
+      return;
+    }
+
+    // Command: /yopish, /hide, /close (Pastki klaviaturani butunlay yashirish)
+    if (text === '/yopish' || text === '/hide' || text === '/close') {
+      await callTelegram('sendMessage', {
+        chat_id: chatId,
+        text: `${EMJ.CHECK} <i>Pastki klaviatura yashirildi. Barcha bo‘limlarni rasm ostidagi qulay tugmalar orqali boshqarishingiz mumkin:</i>`,
+        parse_mode: 'HTML',
+        reply_markup: { remove_keyboard: true }
+      });
+      return;
+    }
+
+    // Command: /menyu, /menu (Pastki klaviaturani ko'rsatish)
+    if (text === '/menyu' || text === '/menu') {
+      await callTelegram('sendMessage', {
+        chat_id: chatId,
+        text: `${EMJ.COMPASS} <i>Tezkor navigatsiya menyusi:</i>`,
+        parse_mode: 'HTML',
+        reply_markup: MAIN_KEYBOARD
       });
       return;
     }
@@ -674,32 +763,32 @@ async function handleUpdate(update) {
       return;
     }
 
-    // Menu: «Kiber-Qalqon»
-    if (text.includes('Kiber-Qalqon')) {
-      await sendCyber(chatId, targetMsgId, isPhoto);
+    // Menu: Loyiha Taqdimoti (Kiber-Qalqon o'rniga)
+    if (text.includes('Taqdimot') || text.includes('Slayd') || text.includes('Kiber-Qalqon') || text === '/slaydlar') {
+      await sendPresentation(chatId, targetMsgId, isPhoto);
       return;
     }
 
     // Menu: Viloyat Iftixorlari
-    if (text.includes('Viloyat Iftixorlari')) {
+    if (text.includes('Viloyat Iftixorlari') || text.includes('Iftixorlar')) {
       await sendHeroes(chatId, targetMsgId, isPhoto);
       return;
     }
 
     // Menu: «Focus Suhbat»
-    if (text.includes('Focus Suhbat')) {
+    if (text.includes('Focus Suhbat') || text.includes('Suhbat')) {
       await sendPodcast(chatId, targetMsgId, isPhoto);
       return;
     }
 
     // Menu: 22 Ta Tuman Maktablari
-    if (text.includes('22 Ta Tuman') || text.includes('Tuman Maktablari')) {
+    if (text.includes('22 Ta Tuman') || text.includes('Tuman Maktablari') || text === '/tumanlar') {
       await sendDistrictsMenu(chatId, targetMsgId, isPhoto);
       return;
     }
 
     // Menu: Murojaat Yo‘llash
-    if (text.includes('Murojaat')) {
+    if (text.includes('Murojaat') || text === '/murojaat') {
       await sendAppeal(chatId, targetMsgId, isPhoto);
       return;
     }
@@ -710,8 +799,8 @@ async function handleUpdate(update) {
                        `Viloyat ta’lim tizimi, yo‘l xaritasi va kutilayotgan natijalar bilan rasmiy vebsayt orqali to‘liq tanishishingiz mumkin:\n\n` +
                        `${EMJ.GLOBE} ${WEBSITE_URL}`;
       const kb = [
-        [{ text: 'Saytni Ochish', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.ROCKET, style: 'primary' }],
-        [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home', icon_custom_emoji_id: TG_ICONS.HOME, style: 'primary' }]
+        [{ text: 'Saytni Ochish', url: WEBSITE_URL }],
+        [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home' }]
       ];
       await renderOrEdit(chatId, targetMsgId, isPhoto, siteText, kb);
       return;
@@ -723,15 +812,51 @@ async function handleUpdate(update) {
       return;
     }
 
-    // Default Fallback (User typed free text / appeal)
+    // Default Fallback: Foydalanuvchi yozgan erkin matn yoki murojaat
     const ticketNum = Math.floor(10000 + Math.random() * 90000);
+    recordAppeal(ticketNum, msg.from, text);
+
+    // 1. Zudlik bilan shaxsan To'rabekning Telegramiga (6291811673) yetkazish!
+    try {
+      const senderFullName = [msg.from.first_name, msg.from.last_name].filter(Boolean).join(' ') || 'Foydalanuvchi';
+      const senderUsername = msg.from.username ? `@${msg.from.username}` : 'Mavjud emas';
+      const timeStr = new Date().toLocaleString('uz-UZ', { timeZone: 'Asia/Tashkent' });
+
+      const adminAlertText =
+        `📬 <b>YANGI MUROJAAT KELIB TUSHDI!</b>\n\n` +
+        `🎫 <b>Chipta raqami:</b> <code>№ FM-${ticketNum}</code>\n` +
+        `👤 <b>Kimdan:</b> <b>${escapeHtml(senderFullName)}</b> (${senderUsername})\n` +
+        `🆔 <b>Telegram ID:</b> <code>${chatId}</code>\n` +
+        `📅 <b>Vaqti:</b> ${timeStr}\n\n` +
+        `📝 <b>Murojaat matni:</b>\n` +
+        `<blockquote>${escapeHtml(text)}</blockquote>`;
+
+      const adminInlineKb = [
+        [
+          msg.from.username
+            ? { text: '💬 Foydalanuvchiga yozish', url: `https://t.me/${msg.from.username}` }
+            : { text: '💬 Profilni ochish', url: `tg://user?id=${chatId}` }
+        ]
+      ];
+
+      await callTelegram('sendMessage', {
+        chat_id: ADMIN_CHAT_ID,
+        text: adminAlertText,
+        parse_mode: 'HTML',
+        reply_markup: { inline_keyboard: adminInlineKb }
+      });
+    } catch (adminErr) {
+      console.error('Failed to forward appeal to admin:', adminErr);
+    }
+
+    // 2. Foydalanuvchiga xushmuomala tasdiqlovchi xabar (o'z joyida tahrirlash)
     const replyText = `${EMJ.CHECK} <b>Murojaatingiz qabul qilindi!</b> ${EMJ.SPARKLES}\n\n` +
                       `Xabaringiz ${EMJ.FOLDER} <b>№ FM-${ticketNum}</b> raqami bilan tizimda ro‘yxatga olindi hamda mas’ul rahbar @${ADMIN_USERNAME} ga yetkazildi.\n\n` +
                       `${EMJ.STAR_SPARKLE} E’tiboringiz va ta’lim rivojiga qo‘shayotgan hissangiz uchun tashakkur!`;
 
     const fallbackKb = [
-      [{ text: 'Yana murojaat yo‘llash', callback_data: 'action_murojaat', icon_custom_emoji_id: TG_ICONS.WRITE, style: 'primary' }],
-      [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home', icon_custom_emoji_id: TG_ICONS.HOME, style: 'primary' }]
+      [{ text: 'Yana murojaat yo‘llash', callback_data: 'action_murojaat' }],
+      [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home' }]
     ];
 
     await renderOrEdit(chatId, targetMsgId, isPhoto, replyText, fallbackKb);
@@ -830,6 +955,10 @@ module.exports = async (req, res) => {
       <div class="info-row">
         <span class="info-label">Jami Foydalanuvchilar:</span>
         <span class="info-val"><span class="badge badge-online">${getUserCount()} ta start bosgan</span></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Jami Murojaatlar:</span>
+        <span class="info-val"><span class="badge badge-online">${botAppeals.length} ta qabul qilingan</span></span>
       </div>
     </div>
     <div class="actions">
