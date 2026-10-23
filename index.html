@@ -1,1026 +1,827 @@
 <!DOCTYPE html>
-<html lang="uz" data-theme="dark">
+<html lang="uz">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Focus Media — Toshkent Viloyati Maktablari Raqamli Axborot Loyihasi</title>
-  <meta name="description" content="Toshkent viloyati umumta'lim muassasalarida zamonaviy axborot makonini shakllantirish, yoshlar media-savodxonligini oshirish va raqamli targ'ibot tizimi.">
-  <meta name="keywords" content="Focus Media, Toshkent viloyati, maktablar, xalq ta'limi, media maktab, Focus Bot, Kiber-qalqon, yosh liderlar">
-  <meta name="author" content="Focus Media Jamoasi & Toshkent Viloyati Hokimligi">
+  <title>Focus Media — Toshkent Viloyati Umumta'lim Muassasalari Yagona Axborot Ekotizimi</title>
+  <meta name="description" content="Toshkent viloyati umumta'lim muassasalarida zamonaviy axborot makonini shakllantirish, yoshlar media-savodxonligini oshirish va raqamli targ'ibot tizimi konsepsiyasi.">
+  <meta name="author" content="Toshkent Viloyati Hokimligi & Focus Media Jamoasi">
 
-  <!-- Open Graph / Meta -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Focus Media — Toshkent Viloyati Maktablari Loyihasi">
-  <meta property="og:description" content="Toshkent viloyati maktablarida yangi avlod axborot markazi va raqamli media ekotizimi.">
+  <meta property="og:description" content="Viloyat maktablarida yangi avlod raqamli axborot makoni va media ekotizimi.">
   <meta property="og:image" content="assets/images/image13.png">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Inter & Syne for Executive Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Stylesheet -->
+  <!-- Liquid Glass Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- Three.js Interactive Particle Canvas -->
+  <!-- Ambient Liquid Glow Elements -->
+  <div class="liquid-glow glow-1"></div>
+  <div class="liquid-glow glow-2"></div>
+  <div class="liquid-glow glow-3"></div>
+
+  <!-- Subtle WebGL Background Canvas -->
   <canvas id="three-canvas"></canvas>
 
-  <!-- Ambient Light Orbs -->
-  <div class="ambient-orb ambient-orb-1"></div>
-  <div class="ambient-orb ambient-orb-2"></div>
-  <div class="ambient-orb ambient-orb-3"></div>
-
   <!-- ==========================================================================
-       NAVIGATION BAR
+       EXECUTIVE NAVIGATION BAR (LIQUID GLASS)
        ========================================================================== -->
-  <header class="navbar">
+  <header class="navbar-wrapper">
     <div class="container">
-      <div class="navbar-inner">
-        <a href="#hero" class="nav-logo">
-          <div class="logo-badge">
-            <i class="fas fa-crosshairs"></i>
+      <nav class="navbar liquid-glass-panel">
+        <a href="#hero" class="nav-brand">
+          <div class="brand-icon">
+            <i class="fas fa-bullseye"></i>
           </div>
-          <div class="logo-text">FOCUS <span>MEDIA</span></div>
+          <div class="brand-info">
+            <span class="brand-title">FOCUS MEDIA</span>
+            <span class="brand-sub">Toshkent Viloyati Maktablari</span>
+          </div>
         </a>
 
-        <ul class="nav-links">
-          <li><a href="#hero" class="nav-link active">Asosiy</a></li>
-          <li><a href="#dolzarblik" class="nav-link">Tahlil & Yechim</a></li>
-          <li><a href="#konsepsiya" class="nav-link">3 Ustun</a></li>
-          <li><a href="#bot-tizimi" class="nav-link">Focus Bot</a></li>
-          <li><a href="#media-portfel" class="nav-link">Media Mahsulotlar</a></li>
-          <li><a href="#iftixorlar" class="nav-link">Iftixorlar</a></li>
-          <li><a href="#kiber-qalqon" class="nav-link">Kiber-Qalqon</a></li>
-          <li><a href="#yol-xaritasi" class="nav-link">Yo'l Xaritasi</a></li>
-        </ul>
+        <div class="nav-links">
+          <a href="#pasport" class="nav-link">Pasport</a>
+          <a href="#muammo" class="nav-link">Tahlil & Yechim</a>
+          <a href="#ustunlar" class="nav-link">3 Ustun</a>
+          <a href="#tuzilma" class="nav-link">Tuzilma</a>
+          <a href="#yol-xaritasi" class="nav-link">Yo'l Xaritasi</a>
+          <a href="#kpi" class="nav-link">KPI</a>
+          <a href="#qaror" class="nav-link">Qaror Taklifi</a>
+        </div>
 
         <div class="nav-actions">
-          <button id="sound-toggle" class="icon-btn" title="Ovozli effektlar" aria-label="Sound Toggle">
-            <i class="fas fa-volume-up"></i>
+          <button type="button" class="btn-liquid-ghost" id="print-doc-btn" title="Hujjatni PDF yoki qog'ozga chop etish">
+            <i class="fas fa-print"></i>
+            <span>Chop etish / PDF</span>
           </button>
-          <button id="theme-toggle" class="icon-btn" title="Rejimni o'zgartirish" aria-label="Theme Toggle">
-            <i class="fas fa-sun"></i>
-          </button>
-          <a href="#boglanish" class="btn btn-primary">
-            <i class="fas fa-paper-plane"></i>
-            <span>Maktabni ulash</span>
+          <a href="#qaror" class="btn-liquid-primary">
+            <span>Hamkorlik</span>
+            <i class="fas fa-arrow-right"></i>
           </a>
-          <button id="menu-toggle" class="icon-btn menu-toggle" aria-label="Menu Toggle">
-            <i class="fas fa-bars"></i>
-          </button>
         </div>
-      </div>
+
+        <button type="button" class="mobile-toggle" id="mobile-toggle" aria-label="Menyu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
     </div>
   </header>
 
-  <!-- ==========================================================================
-       HERO SECTION
-       ========================================================================== -->
-  <section id="hero" class="hero-section">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i class="fas fa-award"></i>
-          <span>Toshkent Viloyati Hokimligi Taqdimoti Uchun Maxsus</span>
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-drawer liquid-glass-panel" id="mobile-drawer">
+    <a href="#pasport" class="mobile-link">01. Loyiha Pasporti</a>
+    <a href="#muammo" class="mobile-link">02. Tahlil va Yechim</a>
+    <a href="#ustunlar" class="mobile-link">03. 3 Asosiy Ustun</a>
+    <a href="#tuzilma" class="mobile-link">04. Tashkiliy Tuzilma</a>
+    <a href="#yol-xaritasi" class="mobile-link">05. Yo'l Xaritasi</a>
+    <a href="#kpi" class="mobile-link">06. Maqsadli Indikatorlar (KPI)</a>
+    <a href="#qaror" class="mobile-link">07. Qaror Qabul Qilish Taklifi</a>
+    <div class="mobile-actions">
+      <button type="button" class="btn-liquid-primary w-full" onclick="window.print()">
+        <i class="fas fa-print"></i> PDF / Chop etish
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION: EXECUTIVE BRIEFING
+         ========================================================================== -->
+    <section class="section-hero" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="pill-badge liquid-glass-pill">
+            <span class="badge-dot"></span>
+            <span>Toshkent Viloyati Hokimligi & Xalq Ta'limi Boshqarmasi Taqdimoti</span>
+          </div>
+
+          <h1 class="hero-title">
+            Umumta’lim Muassasalarida <br>
+            <span class="gradient-text">Yagona Axborot Makoni</span> va Raqamli Targ‘ibot Tizimi
+          </h1>
+
+          <p class="hero-desc">
+            Viloyatning 22 ta tuman va shahridagi maktablarda tarqoq axborot siyosatiga barham berish, 
+            yoshlar media-savodxonligini oshirish, kiber-xavfsizlik madaniyatini shakllantirish hamda 
+            iqtidorli yoshlar yutuqlarini tizimli ommalashtirish bo‘yicha <strong>«Focus Media»</strong> raqamli ekotizimi.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#pasport" class="btn-liquid-primary">
+              <i class="fas fa-file-contract"></i>
+              <span>Loyiha Pasporti bilan tanishish</span>
+            </a>
+            <a href="#yol-xaritasi" class="btn-liquid-secondary">
+              <i class="fas fa-calendar-check"></i>
+              <span>Amalga oshirish rejasi (Yo'l xaritasi)</span>
+            </a>
+          </div>
+
+          <!-- EXECUTIVE KPI METRICS (LIQUID GLASS TILES) -->
+          <div class="hero-stats-grid">
+            <div class="stat-card liquid-glass-card">
+              <div class="stat-meta">
+                <span class="stat-num" data-target="22">22</span>
+                <span class="stat-unit">ta</span>
+              </div>
+              <div class="stat-label">Tuman va shahar to'liq qamrovi</div>
+              <div class="stat-sub">Viloyat bo'yicha yagona axborot tarmog'i</div>
+            </div>
+
+            <div class="stat-card liquid-glass-card">
+              <div class="stat-meta">
+                <span class="stat-num" data-target="900">900</span>
+                <span class="stat-unit">+</span>
+              </div>
+              <div class="stat-label">Umumta'lim maktablari</div>
+              <div class="stat-sub">Standartlashtirilgan media-burchaklar</div>
+            </div>
+
+            <div class="stat-card liquid-glass-card">
+              <div class="stat-meta">
+                <span class="stat-num" data-target="450">450</span>
+                <span class="stat-unit">k+</span>
+              </div>
+              <div class="stat-label">O'quvchi va ota-onalar</div>
+              <div class="stat-sub">Yagona rasmiy axborot iste'molchilari</div>
+            </div>
+
+            <div class="stat-card liquid-glass-card highlight-card">
+              <div class="stat-meta">
+                <span class="stat-num" data-target="100">100</span>
+                <span class="stat-unit">%</span>
+              </div>
+              <div class="stat-label">Ochiqlik va ishonchlilik</div>
+              <div class="stat-sub">Feyk va tekshirilmagan xabarlarga chek</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 1: LOYIHA PASPORTI (OFFICIAL PROJECT PASSPORT)
+         ========================================================================== -->
+    <section class="section-block" id="pasport">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag liquid-glass-pill">01 / RASMIY HUJJAT</div>
+          <h2 class="section-heading">Loyiha Pasporti va Asosiy Ko‘rsatkichlar</h2>
+          <p class="section-lead">Toshkent viloyati ta’lim tizimida axborot boshqaruvini yangi bosqichga olib chiquvchi rasmiy parametrlari.</p>
         </div>
 
-        <h1 class="hero-title">
-          Umumta’lim Muassasalarida <span class="gradient-text">Zamonaviy Axborot Makoni</span> va Raqamli Targ‘ibot Tizimi
-        </h1>
+        <div class="passport-grid">
+          <div class="passport-table-card liquid-glass-card">
+            <table class="executive-table">
+              <tbody>
+                <tr>
+                  <td class="col-label"><i class="fas fa-tag"></i> Loyiha nomi:</td>
+                  <td class="col-val"><strong>«Focus Media»</strong> — Toshkent viloyati umumta’lim muassasalarining yagona raqamli media tizimi</td>
+                </tr>
+                <tr>
+                  <td class="col-label"><i class="fas fa-landmark"></i> Tashabbuskor va buyurtmachi:</td>
+                  <td class="col-val">Toshkent viloyati hokimligi, Maktabgacha va maktab ta’limi boshqarmasi</td>
+                </tr>
+                <tr>
+                  <td class="col-label"><i class="fas fa-map-marked-alt"></i> Amalga oshirish hududi:</td>
+                  <td class="col-val">Toshkent viloyatining barcha 22 ta tuman va shaharlari</td>
+                </tr>
+                <tr>
+                  <td class="col-label"><i class="fas fa-users"></i> Maqsadli auditoriya:</td>
+                  <td class="col-val">Viloyatdagi 900+ maktab o‘quvchilari, ota-onalar, pedagoglar va maktab yetakchilari</td>
+                </tr>
+                <tr>
+                  <td class="col-label"><i class="fas fa-lightbulb"></i> Bosh g‘oya:</td>
+                  <td class="col-val"><em>«Focus Media — bu shunchaki axborot kanali emas, balki Toshkent viloyati yoshlarining intellektual salohiyati, vatanparvarligi va zamonaviy imijini namoyon etuvchi raqamli ko‘zgudir!»</em></td>
+                </tr>
+                <tr>
+                  <td class="col-label"><i class="fas fa-coins"></i> Byudjet yondashuvi:</td>
+                  <td class="col-val"><span class="badge-accent">Kam xarajatli (Low-Cost)</span> — qo‘shimcha shtat talab etmaydi; mavjud maktab texnik bazasi va iqtidorli yoshlar ishtirokida</td>
+                </tr>
+                <tr>
+                  <td class="col-label"><i class="fas fa-clock"></i> Joriy etish muddati:</td>
+                  <td class="col-val">4 bosqichda (Pilot sinovi 1 oy ichida, viloyat bo‘ylab to‘liq qamrov 4 oyda)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-        <p class="hero-subtitle">
-          Toshkent viloyati maktablarida ta'lim sifatini yuksaltirish, yoshlarning media-savodxonligini oshirish hamda maktab yutuqlarini keng jamoatchilikka professional darajada namoyon etuvchi innovatsion loyiha.
-        </p>
+          <div class="passport-summary-card liquid-glass-card">
+            <h3 class="card-title"><i class="fas fa-shield-alt"></i> Rahbariyat Uchun Asosiy Foyda</h3>
+            <ul class="benefit-list">
+              <li>
+                <div class="b-icon"><i class="fas fa-check"></i></div>
+                <div class="b-text">
+                  <strong>Nazorat va Ochiqlik:</strong> Har bir tuman va maktabdagi ta’lim holati, yutuqlar va muammolar bo‘yicha har kuni haqqoniy, filtrlangan axborot oqimi.
+                </div>
+              </li>
+              <li>
+                <div class="b-icon"><i class="fas fa-check"></i></div>
+                <div class="b-text">
+                  <strong>Tezkor Munosabat (15 daqiqa):</strong> Ijtimoiy tarmoqlardagi feyk, dezinformatsiya va mish-mishlarga rasmiy munosabat bildirishning barqaror kanali.
+                </div>
+              </li>
+              <li>
+                <div class="b-icon"><i class="fas fa-check"></i></div>
+                <div class="b-text">
+                  <strong>Viloyat Yoshlari Nufuzi:</strong> Xalqaro va respublika olimpiadasi g‘oliblari, chempionlar va ilg‘or ustozlarni respublika miqyosida brendga aylantirish.
+                </div>
+              </li>
+              <li>
+                <div class="b-icon"><i class="fas fa-check"></i></div>
+                <div class="b-text">
+                  <strong>Kasbga Yo‘naltirish:</strong> 5,000+ nafar yoshlarni zamonaviy daromadli kasblarga (SMM, mobilografiya, montaj, jurnalistika) bepul yo‘naltirish.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="hero-quote">
-          “Focus Media — bu shunchaki axborot kanali emas, balki Toshkent viloyati yoshlarining intellektual salohiyati, vatanparvarligi va zamonaviy imijini namoyon etuvchi raqamli ko‘zgudir!”
+    <!-- ==========================================================================
+         SECTION 2: TAHLIL VA STRATEGIK YECHIM (AS-IS vs TO-BE)
+         ========================================================================== -->
+    <section class="section-block" id="muammo">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag liquid-glass-pill">02 / TAHLIL VA DOLZARBLIK</div>
+          <h2 class="section-heading">Mavjud Holat Tahlili va «Focus Media» Yechimi</h2>
+          <p class="section-lead">Tizimdagi real bo‘shliqlar va ularni bartaraf etuvchi aniq strategik yechimlar solishtirmasi.</p>
         </div>
 
-        <div class="hero-actions">
-          <a href="#konsepsiya" class="btn btn-primary">
-            <i class="fas fa-compass"></i>
-            <span>Loyihani to'liq o'rganish</span>
-          </a>
-          <a href="#bot-tizimi" class="btn btn-secondary">
-            <i class="fab fa-telegram-plane"></i>
-            <span>Focus Bot interaktiv demo</span>
-          </a>
-          <a href="#boglanish" class="btn btn-gold">
-            <i class="fas fa-file-signature"></i>
-            <span>Hamkorlik arizasi</span>
-          </a>
+        <div class="analysis-grid">
+          <!-- Item 1 -->
+          <div class="analysis-card liquid-glass-card">
+            <div class="card-status-pill problem-pill">Mavjud Bo‘shliq 01</div>
+            <h3 class="analysis-title">Axborot Uzilishi</h3>
+            <p class="analysis-p">
+              Maktablarda o‘tkazilayotgan yirik islohotlar, fan to‘garaklari va o‘quvchilar yutuqlari maktab devoridan tashqariga chiqmaydi. Jamoatchilik va ota-onalar maktabdagi ijobiy o‘zgarishlardan bexabar qolmoqda.
+            </p>
+            <div class="solution-box">
+              <div class="sol-tag"><i class="fas fa-arrow-down"></i> Focus Media Strategik Yechimi:</div>
+              <p class="sol-text">
+                <strong>Yagona Markazlashgan Axborot Tarmog‘i:</strong> Viloyatning barcha maktablari yagona Telegram-bot va raqamli platformaga ulanadi. Barcha yangiliklar professional video-lavha shaklida jamoatchilikka yetkaziladi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="analysis-card liquid-glass-card">
+            <div class="card-status-pill problem-pill">Mavjud Bo‘shliq 02</div>
+            <h3 class="analysis-title">Eskirgan Yondashuv</h3>
+            <p class="analysis-p">
+              Targ‘ibot ishlari hanuzgacha qog‘oz e’lonlar, stendlar va quruq rasmiy hisobotlar shaklida qolib ketgan. Bu esa zamonaviy raqamli avlod (Z va Alpha) qiziqishiga mutlaqo javob bermaydi.
+            </p>
+            <div class="solution-box">
+              <div class="sol-tag"><i class="fas fa-arrow-down"></i> Focus Media Strategik Yechimi:</div>
+              <p class="sol-text">
+                <strong>Ta’sirchan Zamonaviy Media:</strong> 60 soniyali Reels, video-dayjestlar, jonli podkastlar va infografikalar. Yoshlar tilida so‘zlashuvchi ta’limiy va ma’rifiy sifatli milliy kontent.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="analysis-card liquid-glass-card">
+            <div class="card-status-pill problem-pill">Mavjud Bo‘shliq 03</div>
+            <h3 class="analysis-title">Muloqot Sustligi</h3>
+            <p class="analysis-p">
+              O‘quvchi, ota-ona va ta’lim rahbariyati o‘rtasida tezkor, shaffof va ishonchli ikki tomonlama muloqot ko‘prigi mavjud emas. Taklif va murojaatlar ko‘pincha o‘z vaqtida yetib bormaydi.
+            </p>
+            <div class="solution-box">
+              <div class="sol-tag"><i class="fas fa-arrow-down"></i> Focus Media Strategik Yechimi:</div>
+              <p class="sol-text">
+                <strong>Avtomatlashtirilgan Focus Bot Portali:</strong> 24/7 rejimida taklif, tashabbus va murojaatlarni qabul qiluvchi, ularni avtomatik tarzda tuman/viloyat mas’ullariga yetkazuvchi shaffof aloqa tizimi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="analysis-card liquid-glass-card">
+            <div class="card-status-pill problem-pill">Mavjud Bo‘shliq 04</div>
+            <h3 class="analysis-title">Mafkura va Kiber-Tahdidlar</h3>
+            <p class="analysis-p">
+              O‘smirlarning ijtimoiy tarmoqlardagi vaqti nazoratsiz bo‘lib, ular kiber-firibgarlik, soxta xabarlar va yot mafkuraviy g‘oyalar ta’siriga tushib qolish xavfi yuqori.
+            </p>
+            <div class="solution-box">
+              <div class="sol-tag"><i class="fas fa-arrow-down"></i> Focus Media Strategik Yechimi:</div>
+              <p class="sol-text">
+                <strong>«Kiber-Qalqon» Immuniteti:</strong> Maktablarda axborot iste’moli madaniyatini shakllantirish, o‘quvchilarni yot g‘oyalardan sifatli milliy kontent va kiberxavfsizlik darslari orqali himoyalash.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: TIZIMNING 3 ASOSIY USTUNI (CORE PILLARS)
+         ========================================================================== -->
+    <section class="section-block" id="ustunlar">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag liquid-glass-pill">03 / KONSEPSIYA VA STRATEGIYA</div>
+          <h2 class="section-heading">«Focus Media» Tizimining 3 Asosiy Ustuni</h2>
+          <p class="section-lead">Har bir yo‘nalish bo‘yicha aniq mexanizm, mahsulotlar va natijalar zanjiri.</p>
         </div>
 
-        <!-- KPI Counter Cards -->
+        <div class="pillars-grid">
+          <!-- Pillar 1 -->
+          <div class="pillar-card liquid-glass-card">
+            <div class="pillar-num">01</div>
+            <div class="pillar-badge">1-YO‘NALISH</div>
+            <h3 class="pillar-title">Raqamli Ta’lim Muhiti va IT Yechimlar</h3>
+            <p class="pillar-lead">Maktab boshqaruvida ochiqlik, avtomatlashtirish va axborot xavfsizligini ta’minlash.</p>
+
+            <div class="pillar-components">
+              <div class="comp-item">
+                <i class="fas fa-robot comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>«Focus Bot» Tizimi:</strong> Ota-onalar, o‘quvchilar va maktab ma’muriyati o‘rtasida tezkor aloqa, elektron e’lonlar va murojaatlar portali.
+                </div>
+              </div>
+              <div class="comp-item">
+                <i class="fas fa-award comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>«Viloyat Iftixorlari» Portali:</strong> Fan olimpiadalari, IT tanlovlari va sport musobaqalari g‘oliblarining viloyat bo‘yicha yagona elektron bazasi.
+                </div>
+              </div>
+              <div class="comp-item">
+                <i class="fas fa-user-shield comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>«Kiber-Qalqon» Dasturi:</strong> O‘quvchilarda internet xavfsizligi, shaxsiy ma’lumotlarni himoyalash va feyk xabarlarni aniqlash madaniyatini shakllantirish.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="pillar-card liquid-glass-card">
+            <div class="pillar-num">02</div>
+            <div class="pillar-badge">2-YO‘NALISH</div>
+            <h3 class="pillar-title">Milliy Media-Kontent va Ma’naviy Targ‘ibot</h3>
+            <p class="pillar-lead">Yoshlar uchun qiziqarli, zamonaviy va ta’sirchan formatdagi media mahsulotlar portfeli.</p>
+
+            <div class="pillar-components">
+              <div class="comp-item">
+                <i class="fas fa-podcast comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>«Focus Suhbat» Podkasti:</strong> Viloyat ziyolilari, fidoyi ustozlar va yosh liderlar ishtirokida dolzarb mavzularda davra suhbatlari.
+                </div>
+              </div>
+              <div class="comp-item">
+                <i class="fas fa-video comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>«Hafta Nigohi» Dayjesti:</strong> Viloyat ta’lim maskanlaridagi islohotlar, eng yaxshi darslar va yutuqlarning 3 daqiqalik qisqa tahliliy sharhi.
+                </div>
+              </div>
+              <div class="comp-item">
+                <i class="fas fa-chalkboard-teacher comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>«Ustozga Ehtirom» Rukni:</strong> Namunali va fidoyi o‘qituvchilarning mehnati hamda obro‘sini oshirishga qaratilgan blits-intervyular.
+                </div>
+              </div>
+              <div class="comp-item">
+                <i class="fas fa-trophy comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>«Chempionlar Yo‘li»:</strong> Xalqaro va respublika g‘olibi bo‘lgan o‘quvchilarning mashaqqatli yo‘li va yutuqlari aks etgan motivatsion roliklar.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-card liquid-glass-card">
+            <div class="pillar-num">03</div>
+            <div class="pillar-badge">3-YO‘NALISH</div>
+            <h3 class="pillar-title">Yosh Jurnalistlar Maktabi va Kadrlar Zaxirasi</h3>
+            <p class="pillar-lead">Har bir maktabda faol o‘quvchilardan iborat professional media guruhlarni shakllantirish.</p>
+
+            <div class="pillar-components">
+              <div class="comp-item">
+                <i class="fas fa-mobile-alt comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>Mobilografiya va Tasvirga Olish:</strong> Smartfon orqali professional sifatdagi foto va video kontent yaratish amaliyoti.
+                </div>
+              </div>
+              <div class="comp-item">
+                <i class="fas fa-film comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>Montaj va Grafik Dizayn:</strong> CapCut, Premiere, Photoshop va zamonaviy infografika yaratish ko‘nikmalari.
+                </div>
+              </div>
+              <div class="comp-item">
+                <i class="fas fa-pen-nib comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>Zamonaviy PR va Jurnalistika:</strong> Rasmiy press-relizlar yozish, intervyu olish va notiqlik mahorati.
+                </div>
+              </div>
+              <div class="comp-item">
+                <i class="fas fa-camera-retro comp-icon"></i>
+                <div class="comp-desc">
+                  <strong>Kam Xarajatli Mobil Studiya:</strong> Qimmat texnikalarsiz, mavjud resurslardan samarali foydalanib professional natijaga erishish modeli.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: TASHKILIY TUZILMA VA BOSHQARUV (MANAGEMENT HIERARCHY)
+         ========================================================================== -->
+    <section class="section-block" id="tuzilma">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag liquid-glass-pill">04 / BOSHQARUV TIZIMI</div>
+          <h2 class="section-heading">«Focus Media» Tashkiliy Tuzilmasi</h2>
+          <p class="section-lead">Qo‘shimcha shtat talab qilmaydigan, ichki iqtidorlar asosida ishlovchi 4 pog‘onali aniq tuzilma.</p>
+        </div>
+
+        <div class="structure-flow">
+          <div class="flow-card liquid-glass-card">
+            <div class="flow-badge">01</div>
+            <div class="flow-icon"><i class="fas fa-user-tie"></i></div>
+            <h3 class="flow-title">Media Koordinator</h3>
+            <div class="flow-role">Maktab Yetakchisi / Informatika Fani O‘qituvchisi</div>
+            <p class="flow-desc">
+              Strategik rejalashtirish, maktab ma’muriyati va tuman ta’lim bo‘limi bilan to‘g‘ridan-to‘g‘ri aloqa, nashrlar sifatini tasdiqlash va IT nazorati.
+            </p>
+          </div>
+
+          <div class="flow-card liquid-glass-card">
+            <div class="flow-badge">02</div>
+            <div class="flow-icon"><i class="fas fa-video"></i></div>
+            <h3 class="flow-title">Tasvir va Montaj Guruhi</h3>
+            <div class="flow-role">2-3 nafar iqtidorli o‘quvchi</div>
+            <p class="flow-desc">
+              Maktabdagi barcha tadbirlar, ochiq darslar va yutuqlarni tezkor tasvirga olish, dinamik montaj qilish va efirga tayyorlash.
+            </p>
+          </div>
+
+          <div class="flow-card liquid-glass-card">
+            <div class="flow-badge">03</div>
+            <div class="flow-icon"><i class="fas fa-palette"></i></div>
+            <h3 class="flow-title">Grafik Dizayn Bo‘limi</h3>
+            <div class="flow-role">1-2 nafar kompyuter grafikasi havaskori</div>
+            <p class="flow-desc">
+              Yagona viloyat brendingi asosida rasmiy e’lonlar, infografikalar, posterlar va taqdimot materiallarini tayyorlash.
+            </p>
+          </div>
+
+          <div class="flow-card liquid-glass-card">
+            <div class="flow-badge">04</div>
+            <div class="flow-icon"><i class="fas fa-microphone-alt"></i></div>
+            <h3 class="flow-title">Yosh Jurnalistlar Guruhi</h3>
+            <div class="flow-role">2-3 nafar adabiyot va tilga qiziqqan o‘quvchi</div>
+            <p class="flow-desc">
+              Tahliliy maqolalar, ustoz va o‘quvchilardan intervyular olish, ijtimoiy so‘rovnomalar o‘tkazish va rasmiy xabarlarni tayyorlash.
+            </p>
+          </div>
+        </div>
+
+        <div class="management-note liquid-glass-card">
+          <div class="note-icon"><i class="fas fa-info-circle"></i></div>
+          <div class="note-body">
+            <strong>Tashkiliy Afzallik:</strong> Mazkur 4 bo‘g‘inli tizim har bir maktabning mavjud yoshlar yetakchisi va informatika o‘qituvchisi rahbarligida faoliyat yuritadi. 
+            Viloyat yoki tuman byudjetidan yangi shtat birligi ochish talab etilmaydi.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 5: IJRO MEXANIZMI VA YO'L XARITASI (ROADMAP)
+         ========================================================================== -->
+    <section class="section-block" id="yol-xaritasi">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag liquid-glass-pill">05 / IJRO MEXANIZMI</div>
+          <h2 class="section-heading">Loyihani Amaliyotga Tatbiq Etish «Yo‘l Xaritasi»</h2>
+          <p class="section-lead">Tayyorgarlikdan boshlab viloyat miqyosida to‘liq qamrovgacha bo‘lgan 4 ta aniq bosqich.</p>
+        </div>
+
+        <div class="roadmap-timeline">
+          <!-- Step 1 -->
+          <div class="roadmap-step liquid-glass-card">
+            <div class="step-sidebar">
+              <span class="step-num">1</span>
+              <span class="step-duration">1-OY</span>
+            </div>
+            <div class="step-content">
+              <div class="step-header">
+                <h3 class="step-title">Normativ Asos va Tayanch Maktablar Bazasi</h3>
+                <span class="step-status status-ready">Boshlang‘ich bosqich</span>
+              </div>
+              <ul class="step-tasks">
+                <li><i class="fas fa-check-circle"></i> Toshkent viloyati Maktabgacha va maktab ta’limi boshqarmasining tegishli buyrug‘ini ishlab chiqish va tasdiqlash.</li>
+                <li><i class="fas fa-check-circle"></i> 22 ta tuman va shaharda 1 tadan (jami 22 ta) tayanch pilot maktablarini belgilash.</li>
+                <li><i class="fas fa-check-circle"></i> Har bir tayanch maktabda mas’ul media-koordinatorlarni biriktirish va ro‘yxatini shakllantirish.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="roadmap-step liquid-glass-card">
+            <div class="step-sidebar">
+              <span class="step-num">2</span>
+              <span class="step-duration">2-OY</span>
+            </div>
+            <div class="step-content">
+              <div class="step-header">
+                <h3 class="step-title">Kadrlar Tayyorlash va Standartlashtirish</h3>
+                <span class="step-status status-prog">O‘quv-amaliy bosqich</span>
+              </div>
+              <ul class="step-tasks">
+                <li><i class="fas fa-check-circle"></i> 22 ta tayanch maktab media guruhlari (100+ nafar yoshlar) uchun 3 kunlik intensiv amaliy seminar va master-klasslar tashkil etish.</li>
+                <li><i class="fas fa-check-circle"></i> Yagona «Focus Media Brandbook» va axborot tarqatish mezonlari qo‘llanmasini tarqatish.</li>
+                <li><i class="fas fa-check-circle"></i> Mobil studiya jihozlari standartlarini joriy qilish.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="roadmap-step liquid-glass-card">
+            <div class="step-sidebar">
+              <span class="step-num">3</span>
+              <span class="step-duration">3-OY</span>
+            </div>
+            <div class="step-content">
+              <div class="step-header">
+                <h3 class="step-title">Yagona Raqamli Tizimni Ishga Tushirish</h3>
+                <span class="step-status status-prog">Texnologik integratsiya</span>
+              </div>
+              <ul class="step-tasks">
+                <li><i class="fas fa-check-circle"></i> «Focus Bot» yagona axborot tizimini to‘liq texnik rejimda ishga tushirish.</li>
+                <li><i class="fas fa-check-circle"></i> Viloyat miqyosida ilk «Hafta Nigohi» tahliliy dayjesti va «Ustozga Ehtirom» ko‘rsatuvlarini efirga uzatish.</li>
+                <li><i class="fas fa-check-circle"></i> «Kiber-Qalqon» o‘quv modullarini barcha maktablar informatika to‘garaklariga integratsiya qilish.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="roadmap-step liquid-glass-card">
+            <div class="step-sidebar">
+              <span class="step-num">4</span>
+              <span class="step-duration">4-OYDAN</span>
+            </div>
+            <div class="step-content">
+              <div class="step-header">
+                <h3 class="step-title">Viloyat Bo‘ylab To‘liq Qamrov va Reyting Tizimi</h3>
+                <span class="step-status status-scale">Doimiy barqaror bosqich</span>
+              </div>
+              <ul class="step-tasks">
+                <li><i class="fas fa-check-circle"></i> Tajribani viloyatdagi qolgan barcha 900+ maktabga bosqichma-bosqich yoyish.</li>
+                <li><i class="fas fa-check-circle"></i> Har oy yakuni bo‘yicha «Eng Faol Maktab Media Markazi» oylik ochiq reytingini e’lon qilish.</li>
+                <li><i class="fas fa-check-circle"></i> Yil yakunida Toshkent viloyati hokimligi kubogi uchun «Viloyat Yoshlar Media Forumi»ni o‘tkazish.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: MAQSADLI INDIKATORLAR (KPI) VA RESURSLAR
+         ========================================================================== -->
+    <section class="section-block" id="kpi">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag liquid-glass-pill">06 / MAQSADLI INDIKATORLAR</div>
+          <h2 class="section-heading">Kutilayotgan Ijtimoiy va Ta’limiy Samaradorlik (KPI)</h2>
+          <p class="section-lead">Loyihaning muvaffaqiyatini baholovchi aniq, o‘lchanadigan va tekshiriladigan indikatorlar.</p>
+        </div>
+
         <div class="kpi-grid">
-          <div class="glass-card kpi-card">
-            <div class="kpi-number counter-val" data-target="100" data-suffix="%">100%</div>
-            <div class="kpi-label">Ochiq axborot va ota-onalar qamrovi</div>
-          </div>
-          <div class="glass-card kpi-card">
-            <div class="kpi-number counter-val" data-target="3" data-suffix="x">3x</div>
-            <div class="kpi-label">O‘quvchilar ijtimoiy faolligi o‘sishi</div>
-          </div>
-          <div class="glass-card kpi-card">
-            <div class="kpi-number counter-val" data-target="25" data-prefix="" data-suffix="+">25+</div>
-            <div class="kpi-label">Har oyda ma’rifiy va tahliliy media kontent</div>
-          </div>
-          <div class="glass-card kpi-card">
-            <div class="kpi-number counter-val" data-target="800" data-suffix="+">800+</div>
-            <div class="kpi-label">Toshkent viloyati maktablari qamrovi</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       PROBLEM & STRATEGIC SOLUTION SECTION
-       ========================================================================== */
-  -->
-  <section id="dolzarblik" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-chart-pie"></i>
-          <span>Tahlil va Dolzarblik</span>
-        </div>
-        <h2 class="section-title">Mavjud Holat Tahlili va <span class="gradient-text">"Focus Media" Strategik Yechimi</span></h2>
-        <p class="section-desc">
-          Ta'lim sohasidagi an'anaviy yondashuvlar va eskirgan qog'ozbozlik o'rniga tezkor, ta'sirchan va zamonaviy raqamli ekotizim taklif etilmoqda.
-        </p>
-      </div>
-
-      <div class="analysis-grid">
-        <!-- Problems Column -->
-        <div class="glass-card problem-col">
-          <div class="col-header">
-            <div class="col-icon">
-              <i class="fas fa-exclamation-triangle"></i>
+          <div class="kpi-card liquid-glass-card">
+            <div class="kpi-circle">
+              <span class="kpi-val">100%</span>
             </div>
-            <div>
-              <h3 class="col-title">Tizimdagi Mavjud Bo‘shliqlar</h3>
-              <p style="color: var(--text-dim); font-size: 0.9rem;">Hozirgi paytda maktablar duch kelayotgan to'siqlar</p>
+            <h3 class="kpi-name">Ochiq Axborot va Ota-onalar Qamrovi</h3>
+            <p class="kpi-desc">Maktab hayotiga oid barcha muhim qarorlar, to‘garaklar va yangiliklar to‘g‘ridan-to‘g‘ri ota-onalarga yetib boradi.</p>
+          </div>
+
+          <div class="kpi-card liquid-glass-card">
+            <div class="kpi-circle">
+              <span class="kpi-val">3x</span>
             </div>
+            <h3 class="kpi-name">O‘quvchilar Ijtimoiy Faolligi O‘sishi</h3>
+            <p class="kpi-desc">O‘quvchilar passiv tomoshabindan o‘z maktabining faol ishtirokchisi va ijodkoriga aylanadi.</p>
           </div>
 
-          <div class="item-card">
-            <h4><i class="fas fa-unlink"></i> Axborot uzilishi</h4>
-            <p>Maktablarning erishayotgan ulkan yutuqlari, fan va sport g'alabalari faqat sinfxonalarda qolib, keng jamoatchilik va ota-onalarga yetib bormaydi.</p>
-          </div>
-
-          <div class="item-card">
-            <h4><i class="fas fa-file-alt"></i> Eskirgan yondashuv</h4>
-            <p>Ma'naviy-ma'rifiy targ'ibot ishlari quruq hisobotlar, tushunarsiz jadvallar va zerikarli rasmiyatchilik shaklida olib borilmoqda.</p>
-          </div>
-
-          <div class="item-card">
-            <h4><i class="fas fa-comments-dollar"></i> Muloqot sustligi</h4>
-            <p>O‘quvchi, ota-ona va maktab rahbariyati o‘rtasida 24/7 ishlovchi ochiq, ishonchli va tezkor axborot ko‘prigi mavjud emas.</p>
-          </div>
-
-          <div class="item-card">
-            <h4><i class="fas fa-shield-virus"></i> Axborot xurujlari</h4>
-            <p>Yoshlar internetda turli zararli kontent va yot g'oyalar ta'siriga tushib qolmoqda, ularga sifatli milliy kontent yetishmaydi.</p>
-          </div>
-        </div>
-
-        <!-- Solutions Column -->
-        <div class="glass-card solution-col">
-          <div class="col-header">
-            <div class="col-icon">
-              <i class="fas fa-check-circle"></i>
+          <div class="kpi-card liquid-glass-card">
+            <div class="kpi-circle">
+              <span class="kpi-val">25+</span>
             </div>
-            <div>
-              <h3 class="col-title">"Focus Media" Strategik Yechimi</h3>
-              <p style="color: var(--text-dim); font-size: 0.9rem;">Loyiha orqali tatbiq etiladigan aniq mexanizmlar</p>
+            <h3 class="kpi-name">Oylik Sifatli Media Kontent</h3>
+            <p class="kpi-desc">Har bir hudud bo‘yicha kamida 25 ta sifatli ta’limiy va ma’rifiy video-roliklar, intervyular hamda dayjestlar.</p>
+          </div>
+
+          <div class="kpi-card liquid-glass-card">
+            <div class="kpi-circle">
+              <span class="kpi-val">15 daq</span>
             </div>
-          </div>
-
-          <div class="item-card">
-            <h4><i class="fas fa-network-wired"></i> Yagona axborot tizimi</h4>
-            <p>Telegram-bot va rasmiy media-portallar orqali barcha maktab yangiliklari, e'lonlar va natijalarning bir lahzada tarqalishi ta'minlanadi.</p>
-          </div>
-
-          <div class="item-card">
-            <h4><i class="fas fa-video"></i> Ta’sirchan va zamonaviy targ‘ibot</h4>
-            <p>Ta’lim va tarbiya jarayoni yoshlar tili bilan — qiziqarli video-dayjestlar, podkastlar va ijtimoiy roliklar orqali yoritiladi.</p>
-          </div>
-
-          <div class="item-card">
-            <h4><i class="fas fa-hands-helping"></i> Ochiq muloqot va qayta aloqa</h4>
-            <p>Ota-onalar va o'quvchilar o'z taklif va murojaatlarini to'g'ridan-to'g'ri mas'ullarga yetkazuvchi shaffof platforma yaratiladi.</p>
-          </div>
-
-          <div class="item-card">
-            <h4><i class="fas fa-shield-alt"></i> Mafkura va Kiber-immunitet</h4>
-            <p>Yoshlarda axborot iste'moli madaniyati shakllantiriladi, milliy qadriyatlar zamonaviy mediada munosib himoya qilinadi.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       CONCEPTION & 3 PILLARS SECTION
-       ========================================================================== -->
-  <section id="konsepsiya" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-cubes"></i>
-          <span>Konsepsiya va Strategiya</span>
-        </div>
-        <h2 class="section-title">"Focus Media" Tizimining <span class="gradient-text">3 Asosiy Ustuni</span></h2>
-        <p class="section-desc">
-          Har tomonlama yetuk, axborot asriga mos, mustaqil fikrli yoshlarni tarbiyalashga qaratilgan yaxlit tizim.
-        </p>
-      </div>
-
-      <div class="pillars-grid">
-        <!-- Pillar 1 -->
-        <div class="glass-card pillar-card pillar-1">
-          <div class="pillar-number">01</div>
-          <div class="pillar-icon-wrap">
-            <i class="fas fa-laptop-code"></i>
-          </div>
-          <h3 class="pillar-title">Raqamli Ta’lim Muhiti</h3>
-          <p class="pillar-desc">
-            Interaktiv "Focus Bot", elektron e’lonlar tizimi, maktab hayotini raqamlashtirish hamda kiberxavfsizlik madaniyatini shakllantirish.
-          </p>
-          <div class="pillar-tags">
-            <span class="pillar-tag">Focus Bot</span>
-            <span class="pillar-tag">Kiber-Qalqon</span>
-            <span class="pillar-tag">E-portal</span>
-            <span class="pillar-tag">Ochiqlik</span>
+            <h3 class="kpi-name">Tezkor Rasmiy Munosabat Tezligi</h3>
+            <p class="kpi-desc">Viloyatdagi har qanday noxolis xabar yoki muammoli holatga 15 daqiqa ichida rasmiy tushuntirish berish tizimi.</p>
           </div>
         </div>
 
-        <!-- Pillar 2 -->
-        <div class="glass-card pillar-card pillar-2">
-          <div class="pillar-number">02</div>
-          <div class="pillar-icon-wrap">
-            <i class="fas fa-photo-film"></i>
-          </div>
-          <h3 class="pillar-title">Milliy Media-Kontent</h3>
-          <p class="pillar-desc">
-            Ta’limiy podkastlar, haftalik tahliliy video-dayjestlar, ustozlar mehnati ehtiromi va yosh chempionlar haqida motivatsion dasturlar.
-          </p>
-          <div class="pillar-tags">
-            <span class="pillar-tag">Focus Suhbat</span>
-            <span class="pillar-tag">Hafta Nigohi</span>
-            <span class="pillar-tag">Ustozga Ehtirom</span>
-            <span class="pillar-tag">Chempionlar</span>
-          </div>
-        </div>
-
-        <!-- Pillar 3 -->
-        <div class="glass-card pillar-card pillar-3">
-          <div class="pillar-number">03</div>
-          <div class="pillar-icon-wrap">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <h3 class="pillar-title">Yosh Jurnalistlar Maktabi</h3>
-          <p class="pillar-desc">
-            O‘quvchilarni zamonaviy kasblarga yo‘naltirish: mobilografiya, montaj, SMM, notiqlik, PR va fakt-cheking ko‘nikmalarini o‘rgatish.
-          </p>
-          <div class="pillar-tags">
-            <span class="pillar-tag">Mobilografiya</span>
-            <span class="pillar-tag">Kopirayting</span>
-            <span class="pillar-tag">Video-montaj</span>
-            <span class="pillar-tag">Kasbga yo'naltirish</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       DIRECTION 1: FOCUS BOT & DIGITAL SOLUTIONS (INTERACTIVE SIMULATOR)
-       ========================================================================== -->
-  <section id="bot-tizimi" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-robot"></i>
-          <span>1-Yo‘nalish: Raqamlashtirish</span>
-        </div>
-        <h2 class="section-title">Innovatsion IT va <span class="gradient-text">"Focus Bot" Tizimi</span></h2>
-        <p class="section-desc">
-          Ota-onalar, o'quvchilar va maktab rahbariyati o'rtasidagi yagona raqamli muloqot ko'prigi. Quyida bot interfeysini sinab ko'ring!
-        </p>
-      </div>
-
-      <div class="bot-showcase-grid">
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="feature-icon-box">
-              <i class="fab fa-telegram-plane"></i>
+        <!-- RESOURCE EFFICIENCY CARD -->
+        <div class="resource-panel liquid-glass-card">
+          <div class="res-head">
+            <div class="res-title">
+              <i class="fas fa-balance-scale"></i>
+              <h3>Iqtisodiy va Resurs Samadorligi: Nega Aynan Ushbu Loyiha?</h3>
             </div>
-            <div class="feature-text">
-              <h4>"Focus Bot" Tezkor Aloqa Portali</h4>
-              <p>Ota-onalar va o'quvchilar maktabdagi yangiliklar, dars jadvallari, e'lonlar va tadbirlarni bir zumda telefonlarida olishadi.</p>
+            <div class="res-badge">Byudjet tejamkorligi</div>
+          </div>
+          <div class="res-grid">
+            <div class="res-col">
+              <h4><i class="fas fa-times-circle text-rose"></i> An’anaviy Og‘ir Loyihalarda</h4>
+              <ul>
+                <li>Qimmatbaho televizion studiya va texnikalar xaridi ($50,000+)</li>
+                <li>Har bir maktabga alohida shtat birliklari ochish zarurati</li>
+                <li>Markazdan uzoq tuman maktablarining e’tibordan chetda qolishi</li>
+                <li>Og‘ir byurokratiya va sekin yangilanish</li>
+              </ul>
             </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-box">
-              <i class="fas fa-trophy"></i>
-            </div>
-            <div class="feature-text">
-              <h4>"Viloyat Iftixorlari" Elektron Bazasi</h4>
-              <p>Fan olimpiadalari, IT tanlovlari va sport musobaqalari g‘oliblarining viloyat bo‘yicha yagona elektron reytingi.</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-box">
-              <i class="fas fa-shield-halved"></i>
-            </div>
-            <div class="feature-text">
-              <h4>"Kiber-Qalqon" Xavfsizlik Moduli</h4>
-              <p>O‘quvchilarda internet firibgarliklariga tushmaslik, fishing havolalardan himoyalanish va sog‘lom kiber-madaniyatni shakllantirish.</p>
-            </div>
-          </div>
-
-          <div class="feature-item">
-            <div class="feature-icon-box">
-              <i class="fas fa-bullhorn"></i>
-            </div>
-            <div class="feature-text">
-              <h4>Kam Xarajatli Mobil Studiya Modeli</h4>
-              <p>Qimmatbaho texnikalarsiz, minimal smartfon va mobil jihozlar yordamida maktabda professional darajadagi media markazni ishga tushirish.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Live Simulated Telegram Bot -->
-        <div class="telegram-mockup">
-          <div class="bot-header">
-            <div class="bot-avatar">FM</div>
-            <div class="bot-info">
-              <h5>Focus Media Bot</h5>
-              <div class="bot-status"><i class="fas fa-circle" style="font-size: 8px;"></i> bot • online</div>
-            </div>
-          </div>
-
-          <div id="bot-messages" class="bot-messages">
-            <div class="bot-bubble incoming">
-              👋 <b>Assalomu alaykum!</b><br>
-              Men Toshkent viloyati umumta'lim maktablarining rasmiy <b>Focus Media</b> axborot botiman.<br><br>
-              Quyidagi tugmalardan birini tanlab, tizim imkoniyatlarini sinab ko'ring:
-            </div>
-          </div>
-
-          <div class="bot-keypad">
-            <button class="bot-cmd-btn" data-cmd="news">
-              <i class="fas fa-newspaper"></i> <span>Yangiliklar</span>
-            </button>
-            <button class="bot-cmd-btn" data-cmd="fame">
-              <i class="fas fa-medal"></i> <span>Iftixorlar</span>
-            </button>
-            <button class="bot-cmd-btn" data-cmd="shield">
-              <i class="fas fa-shield-alt"></i> <span>Kiber-Qalqon</span>
-            </button>
-            <button class="bot-cmd-btn" data-cmd="podcast">
-              <i class="fas fa-podcast"></i> <span>Podkastlar</span>
-            </button>
-            <button class="bot-cmd-btn" data-cmd="feedback" style="grid-column: span 2;">
-              <i class="fas fa-comment-dots"></i> <span>Rahbariyatga Murojaat</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       DIRECTION 2: MEDIA PRODUCTS PORTFOLIO
-       ========================================================================== -->
-  <section id="media-portfel" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-clapperboard"></i>
-          <span>2-Yo‘nalish: Ma'naviy-Ma'rifiy Targ'ibot</span>
-        </div>
-        <h2 class="section-title">Zamonaviy Media <span class="gradient-text">Mahsulotlar Portfeli</span></h2>
-        <p class="section-desc">
-          O‘quvchilar ongiga ijobiy ta’sir ko‘rsatuvchi, milliy va ma’rifiy ruhdagi zamonaviy dasturlar rukni.
-        </p>
-      </div>
-
-      <div class="media-grid">
-        <!-- Media Card 1: Podcast -->
-        <div class="glass-card media-card">
-          <div class="media-tag tag-podcast">
-            <i class="fas fa-microphone-lines"></i>
-            <span>Davra Suhbatlari</span>
-          </div>
-          <h3 class="media-title">"Focus Suhbat" Podkasti</h3>
-          <p class="media-desc">
-            Ziyolilar, ilg‘or xalqaro pedagoglar, olimpiada g'oliblari va yosh yetakchilar ishtirokida dolzarb ta'limiy mavzularda ochiq davra suhbati.
-          </p>
-
-          <div class="audio-player">
-            <button id="podcast-play-btn" class="play-btn" aria-label="Play Podcast">
-              <i class="fas fa-play"></i>
-            </button>
-            <div id="podcast-waveform" class="waveform">
-              <div class="wave-bar"></div>
-              <div class="wave-bar"></div>
-              <div class="wave-bar"></div>
-              <div class="wave-bar"></div>
-              <div class="wave-bar"></div>
-              <div class="wave-bar"></div>
-              <div class="wave-bar"></div>
-              <div class="wave-bar"></div>
-              <div class="wave-bar"></div>
-              <div class="wave-bar"></div>
-            </div>
-            <div id="podcast-time" class="audio-time">0:00</div>
-          </div>
-        </div>
-
-        <!-- Media Card 2: Digest -->
-        <div class="glass-card media-card">
-          <div class="media-tag tag-digest">
-            <i class="fas fa-video"></i>
-            <span>Video Dayjest</span>
-          </div>
-          <h3 class="media-title">"Hafta Nigohi" Dayjesti</h3>
-          <p class="media-desc">
-            Toshkent viloyati maktablaridagi haftalik yangiliklar, ta'lim islohotlari, fan to'garaklari va laboratoriyalardagi qizg'in jarayonlarning 3 daqiqalik dinamik videolavhasi.
-          </p>
-          <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-glass);">
-            <span style="font-size: 0.85rem; color: var(--cyan-primary); font-weight: 700;">Haftalik e'lonlar: Har dushanba</span>
-            <span style="font-size: 0.85rem; color: var(--text-dim);"><i class="fas fa-eye"></i> 15,000+ ko'rishlar</span>
-          </div>
-        </div>
-
-        <!-- Media Card 3: Respect to Teachers -->
-        <div class="glass-card media-card">
-          <div class="media-tag tag-mentor">
-            <i class="fas fa-chalkboard-user"></i>
-            <span>O'qituvchi Nufuzi</span>
-          </div>
-          <h3 class="media-title">"Ustozga Ehtirom" Rukni</h3>
-          <p class="media-desc">
-            O‘qituvchilarning jamiyatdagi yuksak mavqeyini oshirishga qaratilgan samimiy blits-intervyular, faxriy pedagoglarning ibratli hayot yo‘li va shogirdlar minnatdorchiligi.
-          </p>
-          <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-glass);">
-            <span style="font-size: 0.85rem; color: var(--emerald); font-weight: 700;">Oylik seriya: 4 ta ko'rsatuv</span>
-            <span style="font-size: 0.85rem; color: var(--text-dim);"><i class="fas fa-heart" style="color: #f43f5e;"></i> 25,000+ pedagoglar</span>
-          </div>
-        </div>
-
-        <!-- Media Card 4: Champions -->
-        <div class="glass-card media-card">
-          <div class="media-tag tag-champ">
-            <i class="fas fa-medal"></i>
-            <span>Iqtidorlar Targ'iboti</span>
-          </div>
-          <h3 class="media-title">"Chekkadan Chempiongacha"</h3>
-          <p class="media-desc">
-            Olis qishloq va tumanlardagi iqtidorli yoshlarning xalqaro fan olimpiadalari, IT hakatonlar va jahon sport arenalaridagi mislsiz g‘alabalari va mashaqqatli yo‘li.
-          </p>
-          <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border-glass);">
-            <span style="font-size: 0.85rem; color: #c084fc; font-weight: 700;">Motivatsion loyiha</span>
-            <span style="font-size: 0.85rem; color: var(--text-dim);"><i class="fas fa-fire" style="color: var(--amber-gold);"></i> 50+ qahramonlar</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       HALL OF FAME (VILOYAT IFTIXORLARI)
-       ========================================================================== -->
-  <section id="iftixorlar" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-star"></i>
-          <span>Viloyat Iftixorlari</span>
-        </div>
-        <h2 class="section-title">Iqtidorli Yoshlar <span class="gradient-text">Shon-Sharaf Zali</span></h2>
-        <p class="section-desc">
-          Har bir yutuq — minglab yoshlar uchun o'rnak! Viloyatimiz faxriga aylangan o'quvchilarning muvaffaqiyati bilan tanishing.
-        </p>
-      </div>
-
-      <!-- Category Filter Tabs -->
-      <div class="filter-tabs">
-        <button class="tab-btn active" data-filter="all">Barchasi</button>
-        <button class="tab-btn" data-filter="olimpiada">Fan Olimpiadalari</button>
-        <button class="tab-btn" data-filter="it">IT & Robototexnika</button>
-        <button class="tab-btn" data-filter="sport">Sport Chempionlari</button>
-        <button class="tab-btn" data-filter="sanat">San'at va Adabiyot</button>
-      </div>
-
-      <div class="fame-grid">
-        <!-- Card 1 -->
-        <div class="glass-card fame-card" data-cat="olimpiada">
-          <div class="fame-avatar">🥇</div>
-          <h4 class="fame-name">Javohir Rustamov</h4>
-          <div class="fame-school">Nurafshon shahar 4-maktab</div>
-          <div class="fame-achievement">Matematika Xalqaro Olimpiadasi (Oltin)</div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="glass-card fame-card" data-cat="it">
-          <div class="fame-avatar">💻</div>
-          <h4 class="fame-name">Madina Alimova</h4>
-          <div class="fame-school">Chirchiq shahar 9-IDUM</div>
-          <div class="fame-achievement">Respublika Sun'iy Intellekt Hakaton G'olibi</div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="glass-card fame-card" data-cat="sport">
-          <div class="fame-avatar">🥋</div>
-          <h4 class="fame-name">Azizbek Qodirov</h4>
-          <div class="fame-school">Bekobod tumani 12-maktab</div>
-          <div class="fame-achievement">Dzyudo bo'yicha Osiyo Chempioni</div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="glass-card fame-card" data-cat="sanat">
-          <div class="fame-avatar">🎨</div>
-          <h4 class="fame-name">Nilufar Sobirova</h4>
-          <div class="fame-school">Qibray tumani 2-maktab</div>
-          <div class="fame-achievement">"Yosh rassomlar" Respublika Gran-prisi</div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="glass-card fame-card" data-cat="it">
-          <div class="fame-avatar">🤖</div>
-          <h4 class="fame-name">Sardor Karimov</h4>
-          <div class="fame-school">Yangiyo'l shahar 1-son maktab</div>
-          <div class="fame-achievement">Robototexnika Milliy Musobaqasi (1-o'rin)</div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="glass-card fame-card" data-cat="olimpiada">
-          <div class="fame-avatar">🔬</div>
-          <h4 class="fame-name">Sevinch Jo'rayeva</h4>
-          <div class="fame-school">Olmaliq shahar 15-maktab</div>
-          <div class="fame-achievement">Kimyo Fani Respublika Olimpiadasi G'olibi</div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="glass-card fame-card" data-cat="sport">
-          <div class="fame-avatar">🥊</div>
-          <h4 class="fame-name">Bekzod Haydarov</h4>
-          <div class="fame-school">Bo'stonliq tumani 28-maktab</div>
-          <div class="fame-achievement">Boks bo'yicha Yoshlar O'zbekiston Chempioni</div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="glass-card fame-card" data-cat="sanat">
-          <div class="fame-avatar">📚</div>
-          <h4 class="fame-name">Mumtozbegim Ravshanova</h4>
-          <div class="fame-school">O'rtachirchiq 34-maktab</div>
-          <div class="fame-achievement">"Yosh kitobxon" Viloyat Bosqichi G'olibi</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       CYBER-SHIELD (KIBER-QALQON INTERACTIVE QUIZ)
-       ========================================================================== -->
-  <section id="kiber-qalqon" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-user-shield"></i>
-          <span>Kiber-Qalqon Loyihasi</span>
-        </div>
-        <h2 class="section-title">Axborot Xavfsizligi va <span class="gradient-text">Kiber-Savodxonlik Testi</span></h2>
-        <p class="section-desc">
-          O'quvchi va ota-onalar internetdagi xavf-xatarlarga tayyormi? Quyidagi 3 ta tezkor savol orqali kiber-savodxonlik darajangizni sinab ko'ring.
-        </p>
-      </div>
-
-      <div class="quiz-wrapper glass-card">
-        <div id="quiz-content-box">
-          <div class="quiz-progress">
-            <span id="quiz-step" class="quiz-step">Savol 1 / 3</span>
-            <span id="quiz-score-badge" class="quiz-score-badge">To'plangan ball: 0</span>
-          </div>
-
-          <h3 id="quiz-question" class="quiz-question">Savol yuklanmoqda...</h3>
-
-          <div id="quiz-options" class="quiz-options">
-            <!-- Options dynamically populated by JavaScript -->
-          </div>
-        </div>
-
-        <!-- Quiz Result Screen -->
-        <div id="quiz-result" class="quiz-result">
-          <div class="result-badge">
-            <i class="fas fa-certificate"></i>
-          </div>
-          <h3 id="quiz-final-title" style="font-size: 1.6rem; margin-bottom: 0.75rem;">Natijangiz</h3>
-          <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem;">
-            Sizning to'g'ri javoblaringiz: <b id="quiz-final-score" style="color: var(--cyan-primary);">0 / 3</b>
-          </p>
-          <button id="restart-quiz-btn" class="btn btn-primary">
-            <i class="fas fa-rotate-right"></i>
-            <span>Qayta topshirish</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       DIRECTION 3: ACADEMY (YOSH JURNALISTLAR VA IT AKADEMIYASI)
-       ========================================================================== -->
-  <section id="akademiya" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-school"></i>
-          <span>3-Yo‘nalish: Kadrlar Zaxirasi</span>
-        </div>
-        <h2 class="section-title">Focus Media Akademiyasi: <span class="gradient-text">Zamonaviy IT & Media Yetakchilari</span></h2>
-        <p class="section-desc">
-          O'quvchilar maktab davridayoq nufuzli zamonaviy kasblar bo'yicha bilim va amaliy tajriba orttiradilar.
-        </p>
-      </div>
-
-      <div class="academy-grid">
-        <div class="glass-card course-card">
-          <div class="course-icon">📱</div>
-          <h3 class="course-title">Mobilografiya & Rejissura</h3>
-          <p class="course-desc">
-            Smartfon orqali professional tasvirga olish, kompozitsiya qoidalari, yorug'lik va estetik video yaratish sirlari.
-          </p>
-          <div class="course-skills">Kamera, Rakurs, Stabilizatsiya</div>
-        </div>
-
-        <div class="glass-card course-card">
-          <div class="course-icon">✂️</div>
-          <h3 class="course-title">Video Montaj & Motion</h3>
-          <p class="course-desc">
-            Zamonaviy montaj dasturlarida (CapCut, Premiere Pro) ishlash, dinamik vizual effektlar va saund-dizayn yaratish.
-          </p>
-          <div class="course-skills">CapCut, Ranglar, Audio-montaj</div>
-        </div>
-
-        <div class="glass-card course-card">
-          <div class="course-icon">🎨</div>
-          <h3 class="course-title">Grafik Dizayn & Brending</h3>
-          <p class="course-desc">
-            Figma, Canva va Photoshop'da yagona maktab vizual uslubi, infografika, muqovalar va posterlar tayyorlash.
-          </p>
-          <div class="course-skills">Figma, Brending, Infografika</div>
-        </div>
-
-        <div class="glass-card course-card">
-          <div class="course-icon">✍️</div>
-          <h3 class="course-title">Kopirayting & Fact-Check</h3>
-          <p class="course-desc">
-            Tahliliy maqolalar, intervyu savollari, axborotni tekshirish (fact-checking) va notiqlik mahorati.
-          </p>
-          <div class="course-skills">Intervyu, Notiqlik, PR</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       ORGANIZATIONAL STRUCTURE
-       ========================================================================== -->
-  <section id="tuzilma" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-sitemap"></i>
-          <span>Boshqaruv Tizimi</span>
-        </div>
-        <h2 class="section-title">"Focus Media" <span class="gradient-text">Tashkiliy Tuzilmasi</span></h2>
-        <p class="section-desc">
-          Har bir maktabda va viloyat miqyosida o'zaro muvofiqlashtirilgan, intizomli va samarali jamoa modeli.
-        </p>
-      </div>
-
-      <div class="org-grid">
-        <div class="glass-card org-card">
-          <div class="org-step">01</div>
-          <h3 class="org-role">Media Koordinator</h3>
-          <p class="org-desc">Strategik rejalashtirish, maktab ma'muriyati va tuman boshqarmasi bilan rasmiy aloqa, loyiha IT nazorati.</p>
-        </div>
-
-        <div class="glass-card org-card">
-          <div class="org-step">02</div>
-          <h3 class="org-role">Tasvir va Montaj Guruhi</h3>
-          <p class="org-desc">Tadbirlarni tezkor tasvirga olish, arxivlash hamda trenddagi formatlarda video-dayjestlar montajini ta'minlash.</p>
-        </div>
-
-        <div class="glass-card org-card">
-          <div class="org-step">03</div>
-          <h3 class="org-role">Grafik Dizayn Bo‘limi</h3>
-          <p class="org-desc">Maktabning yagona brendingi, ijtimoiy tarmoqlar uchun infografikalar va taqdimot materiallarini tayyorlash.</p>
-        </div>
-
-        <div class="glass-card org-card">
-          <div class="org-step">04</div>
-          <h3 class="org-role">Yosh Jurnalistlar Guruhi</h3>
-          <p class="org-desc">Maktab hayotidan tahliliy maqolalar, rasmiy press-relizlar, ustozlar va o'quvchilar bilan intervyular olib borish.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       ROADMAP SECTION (YO'L XARITASI)
-       ========================================================================== -->
-  <section id="yol-xaritasi" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-route"></i>
-          <span>Ijro Mexanizmi</span>
-        </div>
-        <h2 class="section-title">Loyihani Amaliyotga Tatbiq Etish <span class="gradient-text">"Yo‘l Xaritasi"</span></h2>
-        <p class="section-desc">
-          Bosqichma-bosqich, tizimli va o'lchanadigan natijalarga asoslangan reja.
-        </p>
-      </div>
-
-      <div class="roadmap-timeline">
-        <div class="glass-card roadmap-card">
-          <div class="phase-tag">1-Bosqich</div>
-          <h3 class="roadmap-title">Saralash & Jamoa</h3>
-          <p class="roadmap-desc">Iqtidorli o‘quvchilarni saralash va har bir maktabda "Focus Media" shtabini tuzish.</p>
-          <div class="roadmap-kpi">Natija: 10–15 nafar yoshlardan iborat media-shtab</div>
-        </div>
-
-        <div class="glass-card roadmap-card">
-          <div class="phase-tag">2-Bosqich</div>
-          <h3 class="roadmap-title">Resurslarni Birlashtirish</h3>
-          <p class="roadmap-desc">Axborot resurslarini yagona brend ostiga jamlash, rasmiy kanallar va Focus Bot'ni ulash.</p>
-          <div class="roadmap-kpi">Natija: Ishga tushirilgan Telegram-bot va kanallar</div>
-        </div>
-
-        <div class="glass-card roadmap-card">
-          <div class="phase-tag">3-Bosqich</div>
-          <h3 class="roadmap-title">Ilk Efirlar & Dayjest</h3>
-          <p class="roadmap-desc">Maktab hayoti haqida haftalik ilk tahliliy dayjest, podkast va intervyularni e’lon qilish.</p>
-          <div class="roadmap-kpi">Natija: Ota-onalar va jamoatchilik qamrovi o'sishi</div>
-        </div>
-
-        <div class="glass-card roadmap-card">
-          <div class="phase-tag">4-Bosqich</div>
-          <h3 class="roadmap-title">Viloyat Bo'ylab Ommalashtirish</h3>
-          <p class="roadmap-desc">Namunaviy tajribani Toshkent viloyatining barcha tuman va shaharlaridagi 800+ maktabga kengaytirish.</p>
-          <div class="roadmap-kpi">Natija: Toshkent viloyati namunaviy maktab media modeli</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       DISTRICTS COVERAGE (TOSHKENT VILOYATI TUMANLARI)
-       ========================================================================== -->
-  <section class="section" style="padding-top: 2rem;">
-    <div class="container">
-      <div class="section-header" style="margin-bottom: 2.5rem;">
-        <div class="section-pill">
-          <i class="fas fa-map-marked-alt"></i>
-          <span>Hududiy Qamrov</span>
-        </div>
-        <h2 class="section-title">Toshkent Viloyati <span class="gradient-text">22 Ta Tuman va Shahri</span></h2>
-        <p class="section-desc">
-          Har bir hudud maktablarida yangi avlod axborot markazlari bosqichma-bosqich yo'lga qo'yiladi.
-        </p>
-      </div>
-
-      <div class="districts-grid">
-        <div class="district-pill"><span>Nurafshon shahri</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Chirchiq shahri</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Olmaliq shahri</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Angren shahri</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Bekobod shahri</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Yangiyo'l shahri</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Ohangaron shahri</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Bo'stonliq tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Qibray tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Zangiota tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Toshkent tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>O'rtachirchiq tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Quyi Chirchiq tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Yuqori Chirchiq tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Yangiyo'l tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Parkent tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Piskent tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Bekobod tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Bo'ka tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Chinoz tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Ohangaron tumani</span> <div class="district-status"></div></div>
-        <div class="district-pill"><span>Oqqo'rg'on tumani</span> <div class="district-status"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-       FAQ SECTION
-       ========================================================================== -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-pill">
-          <i class="fas fa-circle-question"></i>
-          <span>Savollar va Javoblar</span>
-        </div>
-        <h2 class="section-title">Ko'p Beriladigan <span class="gradient-text">Muhim Savollar</span></h2>
-      </div>
-
-      <div class="faq-wrap">
-        <div class="glass-card faq-item active">
-          <button class="faq-trigger">
-            <span>Loyiha maktab byudjetiga qo'shimcha og'irlik keltirib chiqarmaydimi?</span>
-            <i class="fas fa-plus faq-icon"></i>
-          </button>
-          <div class="faq-body">
-            <div class="faq-content">
-              Yo'q, mutlaqo. "Focus Media" tizimi tejamkor, kam xarajatli "Mobil Studiya" tamoyiliga tayanadi. Barcha tasvirga olish va montaj ishlari zamonaviy smartfonlar va ochiq bepul ilovalar orqali amalga oshiriladi.
-            </div>
-          </div>
-        </div>
-
-        <div class="glass-card faq-item">
-          <button class="faq-trigger">
-            <span>O'quvchilar bu jarayonda darslardan chalg'ib qolmaydimi?</span>
-            <i class="fas fa-plus faq-icon"></i>
-          </button>
-          <div class="faq-body">
-            <div class="faq-content">
-              Aksincha, o'quvchilar darsdan bo'sh vaqtlarda, to'garak va jamoat faoliyati sifatida qatnashadilar. Bu ularning nutqi, mantiqiy fikrlashi va kelajakdagi nufuzli kasblarga (IT, jurnalistika, dizayn) tayyorlanishiga xizmat qiladi.
-            </div>
-          </div>
-        </div>
-
-        <div class="glass-card faq-item">
-          <button class="faq-trigger">
-            <span>Maktabimizni ushbu loyihaga qanday ulashimiz mumkin?</span>
-            <i class="fas fa-plus faq-icon"></i>
-          </button>
-          <div class="faq-body">
-            <div class="faq-content">
-              Quyidagi ariza formasini to'ldirish yoki tuman ta'lim boshqarmasi orqali murojaat qilish kifoya. Bizning koordinatorlarimiz maktabga kelib, o'quvchilar uchun mahorat darslari o'tkazadi va Focus Media shtabini tuzishga ko'maklashadi.
+            <div class="res-divider"></div>
+            <div class="res-col">
+              <h4><i class="fas fa-check-circle text-emerald"></i> «Focus Media» Modelida</h4>
+              <ul>
+                <li><strong>Kam Xarajatli Mobil Studiya:</strong> Zamonaviy smartfonlar, mikrofon va yorug‘lik vositalari</li>
+                <li><strong>Mavjud Resurslar:</strong> Maktab yetakchilari va informatika fani o‘qituvchilari koordinatorligi</li>
+                <li><strong>Teng Huquqli Qamrov:</strong> Chekka qishloq maktabidagi iqtidor ham markaz bilan bir xil e’tirof etiladi</li>
+                <li><strong>Tezkor va Raqamli:</strong> Barcha materiallar 1 kunda montaj qilinadi va tarqatiladi</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ==========================================================================
-       APPLICATION & CONTACT FORM SECTION
-       ========================================================================== -->
-  <section id="boglanish" class="section">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="section-pill">
-            <i class="fas fa-envelope"></i>
-            <span>Bog'lanish va Hamkorlik</span>
-          </div>
-          <h2 class="section-title">Maktabingizni Loyihaga <span class="gradient-text">Hoziroq Qo'shing</span></h2>
-          <p class="section-desc">
-            Toshkent viloyatining barcha umumta'lim muassasalari, pedagoglar va iqtidorli o'quvchilari uchun eshiklarimiz ochiq.
-          </p>
-
-          <div class="info-item">
-            <div class="info-icon"><i class="fas fa-building-columns"></i></div>
-            <div class="info-text">
-              <h5>Boshqaruv Idorasi</h5>
-              <p>Toshkent viloyati, Nurafshon shahri, Toshkent yo'li ko'chasi</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon"><i class="fab fa-telegram"></i></div>
-            <div class="info-text">
-              <h5>Rasmiy Telegram Kanal</h5>
-              <p>@FocusMedia_ToshVil (Tezkor ma'lumotlar va yangiliklar)</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon"><i class="fas fa-phone"></i></div>
-            <div class="info-text">
-              <h5>Aloqa Markazi</h5>
-              <p>+998 (71) 200-00-00 • media@toshvil-maktab.uz</p>
-            </div>
-          </div>
+    <!-- ==========================================================================
+         SECTION 7: HUDUDLAR BO'YICHA MONITORING (22 TA TUMAN VA SHAHAR)
+         ========================================================================== -->
+    <section class="section-block" id="hududlar">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag liquid-glass-pill">07 / VILOYAT QAMROVI</div>
+          <h2 class="section-heading">22 Ta Tuman va Shahar Reestr Ro‘yxati</h2>
+          <p class="section-lead">Loyiha tatbiq etiladigan Toshkent viloyati ma’muriy-hududiy birliklari bo‘yicha tayanch bazalar.</p>
         </div>
 
-        <div class="glass-card contact-form-box">
-          <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem;">
-            Maktabni Ulash / A'zolik Arizasi
-          </h3>
-          <form id="school-connect-form">
-            <div class="form-group">
-              <label class="form-label">Tuman yoki Shahar</label>
-              <select class="form-select" required>
-                <option value="">Tuman/Shaharni tanlang...</option>
-                <option value="nurafshon">Nurafshon shahri</option>
-                <option value="chirchiq">Chirchiq shahri</option>
-                <option value="olmaliq">Olmaliq shahri</option>
-                <option value="angren">Angren shahri</option>
-                <option value="bekobod">Bekobod shahri</option>
-                <option value="yangiyol">Yangiyo'l shahri</option>
-                <option value="qibray">Qibray tumani</option>
-                <option value="bostonliq">Bo'stonliq tumani</option>
-                <option value="zangiota">Zangiota tumani</option>
-                <option value="ortachirchiq">O'rtachirchiq tumani</option>
-                <option value="boshqa">Boshqa tuman</option>
-              </select>
+        <div class="districts-table-wrapper liquid-glass-card">
+          <div class="table-actions">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" id="district-search" placeholder="Tuman yoki shaharni qidirish...">
             </div>
+            <div class="table-stat">Jami: <strong>22 ta hudud</strong> | <strong>900+ maktab</strong></div>
+          </div>
 
-            <div class="form-group">
-              <label class="form-label">Maktab Raqami yoki Nomi</label>
-              <input type="text" class="form-input" placeholder="Masalan: 4-sonli umumta'lim maktabi" required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Mas'ul Shaxs F.I.Sh & Lavozimi</label>
-              <input type="text" class="form-input" placeholder="Direktor / O'quvchi / Yetakchi" required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Telefon Raqam & Telegram Username</label>
-              <input type="text" class="form-input" placeholder="+998 (90) 123-45-67 | @username" required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Izoh yoki Taklif</label>
-              <textarea class="form-textarea" placeholder="Maktabingizdagi mavjud sharoit yoki jamoa haqida qisqacha..."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
-              <i class="fas fa-check-double"></i>
-              <span>Arizani Yuborish</span>
-            </button>
-          </form>
+          <div class="table-responsive">
+            <table class="districts-table" id="districts-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Hudud Nomi</th>
+                  <th>Hudud Toifasi</th>
+                  <th>Maktablar Soni</th>
+                  <th>Tayanch Pilot Maktabi</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>01</td><td><strong>Nurafshon shahri</strong></td><td>Viloyat markazi</td><td>12 ta</td><td>1-sonli ixtisoslashtirilgan maktab</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>02</td><td><strong>Chirchiq shahri</strong></td><td>Sanoat va ta'lim markazi</td><td>26 ta</td><td>9-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>03</td><td><strong>Angren shahri</strong></td><td>Sanoat shahri</td><td>34 ta</td><td>14-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>04</td><td><strong>Olmaliq shahri</strong></td><td>Kon-metallurgiya markazi</td><td>24 ta</td><td>5-sonli ixtisoslashtirilgan maktab</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>05</td><td><strong>Bekobod shahri</strong></td><td>Metallurgiya shahri</td><td>18 ta</td><td>16-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>06</td><td><strong>Yangiyo‘l shahri</strong></td><td>Shaharcha</td><td>15 ta</td><td>2-sonli maktab-internat</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>07</td><td><strong>Ohangaron shahri</strong></td><td>Sanoat shaharchasi</td><td>11 ta</td><td>3-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>08</td><td><strong>Zangiota tumani</strong></td><td>Yirik tuman</td><td>48 ta</td><td>21-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>09</td><td><strong>Qibray tumani</strong></td><td>Ilmiy-madaniy tuman</td><td>42 ta</td><td>7-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>10</td><td><strong>Bo‘stonliq tumani</strong></td><td>Turizm va tog'oldi</td><td>54 ta</td><td>1-sonli ixtisoslashgan maktab</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>11</td><td><strong>Parkent tumani</strong></td><td>Agrosanoat va turizm</td><td>38 ta</td><td>11-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>12</td><td><strong>Toshkent tumani</strong></td><td>Poytaxtoldi hudud</td><td>40 ta</td><td>25-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>13</td><td><strong>O‘rtachirchiq tumani</strong></td><td>Qishloq xo'jaligi</td><td>56 ta</td><td>4-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>14</td><td><strong>Yuqorichirchiq tumani</strong></td><td>Agrosanoat</td><td>45 ta</td><td>8-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>15</td><td><strong>Quyichirchiq tumani</strong></td><td>Agrosanoat</td><td>39 ta</td><td>12-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>16</td><td><strong>Chinoz tumani</strong></td><td>Logistika va agro</td><td>46 ta</td><td>18-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>17</td><td><strong>Yangiyo‘l tumani</strong></td><td>Agrosanoat</td><td>51 ta</td><td>31-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>18</td><td><strong>Bekobod tumani</strong></td><td>Agrosanoat</td><td>55 ta</td><td>6-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>19</td><td><strong>Bo‘ka tumani</strong></td><td>Agrohudud</td><td>47 ta</td><td>9-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>20</td><td><strong>Piskent tumani</strong></td><td>Agrohudud</td><td>33 ta</td><td>2-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>21</td><td><strong>Oqqo‘rg‘on tumani</strong></td><td>Agrohudud</td><td>36 ta</td><td>15-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+                <tr><td>22</td><td><strong>Ohangaron tumani</strong></td><td>Tog'oldi va sanoat</td><td>29 ta</td><td>10-sonli umumta'lim maktabi</td><td><span class="status-badge ready">Pilotga tayyor</span></td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 8: QAROR QABUL QILISH TAKLIFI (EXECUTIVE RESOLUTION DRAFT)
+         ========================================================================== -->
+    <section class="section-block section-decision" id="qaror">
+      <div class="container">
+        <div class="decision-card liquid-glass-card">
+          <div class="decision-header">
+            <div class="section-tag liquid-glass-pill">08 / RAHBARIYAT E’TIBORIGA</div>
+            <h2 class="decision-title">Loyihani Ishga Tushirish Bo‘yicha Qaror Qabul Qilish Taklifi</h2>
+            <p class="decision-lead">Toshkent viloyati hokimligi hamda Maktabgacha va maktab ta’limi boshqarmasi rahbariyatiga taqdim etiladigan amaliy chora-tadbirlar rejasi.</p>
+          </div>
+
+          <div class="decision-steps-grid">
+            <div class="d-step liquid-glass-panel">
+              <div class="d-num">1-QADAM</div>
+              <h4 class="d-step-title">Farmoyish / Buyruq Loyihasi</h4>
+              <p class="d-desc">
+                Toshkent viloyati Maktabgacha va maktab ta’limi boshqarmasining «Focus Media raqamli axborot tizimini joriy etish to‘g‘risida»gi buyrug‘ini qabul qilish va nizomini tasdiqlash.
+              </p>
+            </div>
+
+            <div class="d-step liquid-glass-panel">
+              <div class="d-num">2-QADAM</div>
+              <h4 class="d-step-title">22 Ta Tayanch Maktabni Biriktirish</h4>
+              <p class="d-desc">
+                Har bir tuman va shaharda 1 tadan pilot maktabni belgilash, media-koordinatorlarni mas’ul etib tayinlash hamda dastlabki o‘quv-seminarini o‘tkazish.
+              </p>
+            </div>
+
+            <div class="d-step liquid-glass-panel">
+              <div class="d-num">3-QADAM</div>
+              <h4 class="d-step-title">Raqamli Platformani Ishga Tushirish</h4>
+              <p class="d-desc">
+                «Focus Bot» va viloyat axborot tarmog‘ini rasmiy ishga tushirish, tumanlararo haftalik dayjestlar va iftixorlar ro‘yxatini muntazam yoritib borish.
+              </p>
+            </div>
+          </div>
+
+          <!-- OFFICIAL CONTACT & ACTION BAR -->
+          <div class="decision-footer">
+            <div class="official-contact">
+              <div class="contact-badge"><i class="fas fa-shield-alt"></i> Rasmiy Loyiha Guruhi</div>
+              <div class="contact-details">
+                <span><i class="fas fa-user-check"></i> <strong>Loyiha Muallifi & Tashabbuskor:</strong> To‘rabek Abduvoitov</span>
+                <span><i class="fas fa-envelope"></i> <strong>Bog‘lanish:</strong> abduvoitov@media.uz / rgobzpe@gmail.com</span>
+                <span><i class="fas fa-map-marker-alt"></i> <strong>Hudud:</strong> Toshkent viloyati, Nurafshon shahri</span>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <button type="button" class="btn-liquid-primary" onclick="window.print()">
+                <i class="fas fa-file-pdf"></i>
+                <span>Taqdimotni PDF Qilib Saqlash</span>
+              </button>
+              <a href="https://github.com/abduvoitov11/focus-media-toshkent" target="_blank" rel="noopener noreferrer" class="btn-liquid-secondary">
+                <i class="fab fa-github"></i>
+                <span>GitHub Repozitoriyasi</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- ==========================================================================
        FOOTER
        ========================================================================== -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-top">
-        <div class="nav-logo">
-          <div class="logo-badge">
-            <i class="fas fa-crosshairs"></i>
-          </div>
-          <div class="logo-text">FOCUS <span>MEDIA</span></div>
+      <div class="footer-content liquid-glass-panel">
+        <div class="footer-brand">
+          <div class="f-brand-title">FOCUS MEDIA — TOSHKENT VILOYATI</div>
+          <p class="f-brand-sub">Umumta’lim muassasalarida yangi avlod raqamli axborot ekotizimi</p>
         </div>
-
-        <div style="display: flex; gap: 1rem;">
-          <a href="#" class="icon-btn" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-          <a href="#" class="icon-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" class="icon-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>
-          © 2026 Focus Media — Toshkent Viloyati Maktablari Axborot Loyihasi. Barcha huquqlar himoyalangan.
-        </div>
-        <div>
-          Toshkent viloyati hokimligi taqdimoti asosida ishlab chiqildi.
+        <div class="footer-meta">
+          <span>© 2026 Barcha huquqlar himoyalangan.</span>
+          <span>Toshkent Viloyati Hokimligi & Xalq Ta'limi Boshqarmasi hamkorligida</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Toast Notification Element -->
-  <div id="toast-notice" class="toast-notice">
-    <i class="fas fa-circle-check" style="color: var(--emerald); font-size: 1.25rem;"></i>
-    <span id="toast-msg">Xabar</span>
-  </div>
-
-  <!-- Three.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="assets/js/three-bg.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
