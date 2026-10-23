@@ -26,17 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (icon) icon.className = 'fas fa-bars';
       });
     });
-  }
 
-  // 2. Print / PDF Button
-  const printBtn = document.getElementById('print-doc-btn');
-  if (printBtn) {
-    printBtn.addEventListener('click', () => {
-      window.print();
+    // Close drawer when clicking outside
+    document.addEventListener('click', (e) => {
+      if (mobileDrawer.classList.contains('active') && !mobileDrawer.contains(e.target) && !mobileToggle.contains(e.target)) {
+        mobileDrawer.classList.remove('active');
+        const icon = mobileToggle.querySelector('i');
+        if (icon) icon.className = 'fas fa-bars';
+      }
     });
   }
 
-  // 3. Smooth Counter Animation for Executive Metrics
+  // 2. Smooth Counter Animation for Executive Metrics
   const metricNumbers = document.querySelectorAll('.metric-num');
   let animated = false;
 
