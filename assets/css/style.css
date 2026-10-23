@@ -796,15 +796,15 @@ body {
 }
 
 /* ==========================================================================
-   SECTION 5: KPI (SLIDE 10)
+   SECTION 5: SAMARADORLIK VA ASOSIY NATIJALAR
    ========================================================================== */
-.kpi-quad-grid {
+.results-quad-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
 }
 
-.kpi-quad-card {
+.results-quad-card {
   padding: 2.2rem 1.5rem;
   text-align: center;
   display: flex;
@@ -812,13 +812,13 @@ body {
   align-items: center;
 }
 
-.kpi-quad-card:hover {
+.results-quad-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--glass-border-hover);
   transform: translateY(-2px);
 }
 
-.kpi-quad-val {
+.results-quad-val {
   font-family: var(--font-display);
   font-size: 2.75rem;
   font-weight: 800;
@@ -827,7 +827,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.kpi-quad-title {
+.results-quad-title {
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
@@ -836,7 +836,7 @@ body {
   line-height: 1.35;
 }
 
-.kpi-quad-desc {
+.results-quad-desc {
   font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.5;
@@ -1030,7 +1030,7 @@ body {
   .analysis-grid,
   .pillars-grid,
   .structure-grid,
-  .kpi-quad-grid {
+  .results-quad-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1052,7 +1052,7 @@ body {
   .analysis-grid,
   .pillars-grid,
   .structure-grid,
-  .kpi-quad-grid {
+  .results-quad-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1120,10 +1120,10 @@ body {
   .pillar-title,
   .struct-title,
   .t-title,
-  .kpi-quad-title,
+  .results-quad-title,
   .conclusion-quote,
   .metric-num,
-  .kpi-quad-val,
+  .results-quad-val,
   .author-title {
     color: #0f172a !important;
     -webkit-text-fill-color: initial !important;
@@ -1142,7 +1142,7 @@ body {
   .pillar-list li,
   .struct-desc,
   .t-text,
-  .kpi-quad-desc,
+  .results-quad-desc,
   .minimal-table td,
   .author-contact {
     color: #334155 !important;
