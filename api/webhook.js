@@ -15,14 +15,31 @@ const ADMIN_USERNAME = 'Torabek_Abduvoitov';
 const BANNER_FILE_ID = 'AgACAgIAAxkDAAOSatuiVM3SONzQqHsSZ0Pk4r4X_qAAAsEvaxtrBuBKwCJK72G3XhQBAAMCAAN4AAM9BA';
 
 // ----------------------------------------------------------------------------
-// Local State Persistence (/tmp/focus_media_bot_state.json)
-// Tracks last bot message per user so chat never gets flooded!
+// Local State & User Analytics Persistence (/tmp)
+// Tracks unique users who pressed /start and keeps chat clean!
 // ----------------------------------------------------------------------------
 const STATE_FILE = '/tmp/focus_media_bot_state.json';
+const USERS_FILE = '/tmp/focus_media_users.json';
+
 let chatState = {};
+let botUsers = {
+  '6291811673': {
+    id: 6291811673,
+    name: 'To‘rabek Abduvoitov',
+    username: '@Torabek_Abduvoitov',
+    last_active: new Date().toISOString()
+  }
+};
+
 try {
   if (fs.existsSync(STATE_FILE)) {
     chatState = JSON.parse(fs.readFileSync(STATE_FILE, 'utf8') || '{}');
+  }
+} catch (_) {}
+
+try {
+  if (fs.existsSync(USERS_FILE)) {
+    botUsers = Object.assign(botUsers, JSON.parse(fs.readFileSync(USERS_FILE, 'utf8') || '{}'));
   }
 } catch (_) {}
 
@@ -35,6 +52,23 @@ function saveLastMessage(chatId, messageId, isPhoto) {
 
 function getLastMessage(chatId) {
   return chatState[chatId] || null;
+}
+
+function recordUser(from) {
+  if (!from || !from.id) return;
+  botUsers[from.id] = {
+    id: from.id,
+    name: [from.first_name, from.last_name].filter(Boolean).join(' ') || 'Foydalanuvchi',
+    username: from.username ? `@${from.username}` : 'Mavjud emas',
+    last_active: new Date().toISOString()
+  };
+  try {
+    fs.writeFileSync(USERS_FILE, JSON.stringify(botUsers));
+  } catch (_) {}
+}
+
+function getUserCount() {
+  return Object.keys(botUsers).length;
 }
 
 // ----------------------------------------------------------------------------
@@ -505,6 +539,7 @@ async function handleUpdate(update) {
   // 1. Callback Query Handler (Inline Buttons Clicked — 100% In-Place Edit)
   if (update.callback_query) {
     const cb = update.callback_query;
+    recordUser(cb.from);
     const chatId = cb.message.chat.id;
     const messageId = cb.message.message_id;
     const isPhoto = !!(cb.message.photo && cb.message.photo.length > 0);
@@ -594,6 +629,7 @@ async function handleUpdate(update) {
   // 2. Message Handler (Text / Commands / Free User Appeals)
   if (update.message) {
     const msg = update.message;
+    recordUser(msg.from);
     const chatId = msg.chat.id;
     const text = (msg.text || '').trim();
     const fromName = msg.from.first_name || 'Foydalanuvchi';
@@ -607,6 +643,24 @@ async function handleUpdate(update) {
     try {
       await callTelegram('deleteMessage', { chat_id: chatId, message_id: msg.message_id });
     } catch (_) {}
+
+    // Admin Command: /stat, /admin, /users (Live User Count)
+    if (text === '/stat' || text === '/admin' || text === '/users') {
+      const count = getUserCount();
+      const list = Object.values(botUsers)
+        .map((u, i) => `${i + 1}. <b>${u.name}</b> (${u.username}) [<code>${u.id}</code>]`)
+        .join('\n');
+      const statText = `📊 <b>«Focus Media» Bot Statistikasi</b>\n\n` +
+                       `👥 <b>Jami start bosgan foydalanuvchilar:</b> ${count} ta\n\n` +
+                       `<b>Foydalanuvchilar ro‘yxati:</b>\n${list}\n\n` +
+                       `${EMJ.CHECK} <i>Ma’lumotlar real vaqt rejimida yangilanadi.</i>`;
+      await callTelegram('sendMessage', {
+        chat_id: chatId,
+        text: statText,
+        parse_mode: 'HTML'
+      });
+      return;
+    }
 
     // Commands: /start, /help
     if (text === '/start' || text === '/help') {
@@ -772,6 +826,10 @@ module.exports = async (req, res) => {
       <div class="info-row">
         <span class="info-label">Mas’ul Admin:</span>
         <span class="info-val"><b>@${ADMIN_USERNAME}</b></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Jami Foydalanuvchilar:</span>
+        <span class="info-val"><span class="badge badge-online">${getUserCount()} ta start bosgan</span></span>
       </div>
     </div>
     <div class="actions">
