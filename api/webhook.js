@@ -253,12 +253,23 @@ async function handleUpdate(update) {
                       `${EMJ.STAR_SPARKLE} <b>«Focus Media — Toshkent Viloyati Maktablari»</b> yagona axborot tizimining rasmiy botiga xush kelibsiz!\n\n` +
                       `Mazkur platforma Toshkent viloyati umumta’lim muassasalarida yangi axborot makonini shakllantirish, yoshlar media-savodxonligini oshirish va iqtidorli o‘quvchilar yutuqlarini keng ommalashtirishga xizmat qiladi.\n\n` +
                       `${EMJ.ARROW_R} <b>Quyidagi bo‘limlardan birini tanlang:</b>`;
-      await callTelegram('sendMessage', {
+
+      const photoRes = await callTelegram('sendPhoto', {
         chat_id: chatId,
-        text: welcome,
+        photo: 'AgACAgIAAxkDAANeatucVaEJp6RT-uzNzPjIpFcMtfYAAqAvaxtrBuBKodld9Is1zsUBAAMCAAN4AAM9BA',
+        caption: welcome,
         parse_mode: 'HTML',
         reply_markup: MAIN_KEYBOARD
       });
+
+      if (!photoRes || !photoRes.ok) {
+        await callTelegram('sendMessage', {
+          chat_id: chatId,
+          text: welcome,
+          parse_mode: 'HTML',
+          reply_markup: MAIN_KEYBOARD
+        });
+      }
       return;
     }
 
