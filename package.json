@@ -1,0 +1,18 @@
+{
+  "name": "focus-media-toshkent",
+  "version": "1.0.0",
+  "description": "Focus Media — Toshkent Viloyati Maktablari Yagona Axborot Ekotizimi va Telegram Boti",
+  "main": "api/webhook.js",
+  "scripts": {
+    "start": "node bot_polling.js",
+    "bot": "node bot_polling.js"
+  },
+  "keywords": [
+    "telegram-bot",
+    "focus-media",
+    "toshkent-viloyati",
+    "vercel"
+  ],
+  "author": "To'rabek Abduvoitov",
+  "license": "MIT"
+}
