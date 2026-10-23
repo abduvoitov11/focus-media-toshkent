@@ -164,47 +164,47 @@ const DISTRICTS_DATA = {
   ohangaron_t: { name: 'Ohangaron tumani', schools: '29 ta', model: '10-sonli umumta’lim maktabi', type: 'Tog‘-kon va chorvachilik' }
 };
 
-// Main Reply Keyboard (With Telegram Premium Animated Custom Icons on Each Button)
+// Main Reply Keyboard (Telegram Premium Animated Custom Icons & Colors on Each Button)
 const MAIN_KEYBOARD = {
   keyboard: [
     [
-      { text: 'Yangiliklar & Dayjestlar', icon_custom_emoji_id: TG_ICONS.NEWS },
-      { text: '«Kiber-Qalqon»', icon_custom_emoji_id: TG_ICONS.SHIELD }
+      { text: 'Haftalik Yangiliklar', icon_custom_emoji_id: TG_ICONS.NEWS, style: 'primary' },
+      { text: '«Kiber-Qalqon»', icon_custom_emoji_id: TG_ICONS.SHIELD, style: 'success' }
     ],
     [
-      { text: 'Viloyat Iftixorlari', icon_custom_emoji_id: TG_ICONS.TROPHY },
-      { text: '«Focus Suhbat»', icon_custom_emoji_id: TG_ICONS.STUDIO_MIC }
+      { text: 'Viloyat Iftixorlari', icon_custom_emoji_id: TG_ICONS.TROPHY, style: 'primary' },
+      { text: '«Focus Suhbat»', icon_custom_emoji_id: TG_ICONS.STUDIO_MIC, style: 'primary' }
     ],
     [
-      { text: '22 Ta Tuman Maktablari', icon_custom_emoji_id: TG_ICONS.MAP },
-      { text: 'Murojaat Yo‘llash', icon_custom_emoji_id: TG_ICONS.WRITE }
+      { text: '22 Ta Tuman Maktablari', icon_custom_emoji_id: TG_ICONS.MAP, style: 'primary' },
+      { text: 'Murojaat Yo‘llash', icon_custom_emoji_id: TG_ICONS.WRITE, style: 'primary' }
     ],
     [
-      { text: 'Rasmiy Vebsayt', icon_custom_emoji_id: TG_ICONS.GLOBE },
-      { text: 'Loyiha Haqida', icon_custom_emoji_id: TG_ICONS.TARGET }
+      { text: 'Rasmiy Vebsayt', icon_custom_emoji_id: TG_ICONS.GLOBE, style: 'primary' },
+      { text: 'Loyiha Haqida', icon_custom_emoji_id: TG_ICONS.TARGET, style: 'primary' }
     ]
   ],
   resize_keyboard: true,
   is_persistent: true
 };
 
-// Master 8-Button Inline Menu (100% Premium Icons on Each Button)
+// Master 8-Button Inline Menu (100% Premium Icons and Styles on Each Button)
 const MASTER_INLINE_MENU = [
   [
-    { text: 'Yangiliklar', callback_data: 'nav_news', icon_custom_emoji_id: TG_ICONS.NEWS },
-    { text: '«Kiber-Qalqon»', callback_data: 'nav_cyber', icon_custom_emoji_id: TG_ICONS.SHIELD }
+    { text: 'Haftalik Yangiliklar', callback_data: 'nav_news', icon_custom_emoji_id: TG_ICONS.NEWS, style: 'primary' },
+    { text: '«Kiber-Qalqon»', callback_data: 'nav_cyber', icon_custom_emoji_id: TG_ICONS.SHIELD, style: 'success' }
   ],
   [
-    { text: 'Viloyat Iftixorlari', callback_data: 'nav_heroes', icon_custom_emoji_id: TG_ICONS.TROPHY },
-    { text: '«Focus Suhbat»', callback_data: 'nav_podcast', icon_custom_emoji_id: TG_ICONS.STUDIO_MIC }
+    { text: 'Viloyat Iftixorlari', callback_data: 'nav_heroes', icon_custom_emoji_id: TG_ICONS.TROPHY, style: 'primary' },
+    { text: '«Focus Suhbat»', callback_data: 'nav_podcast', icon_custom_emoji_id: TG_ICONS.STUDIO_MIC, style: 'primary' }
   ],
   [
-    { text: '22 Ta Tuman', callback_data: 'nav_districts', icon_custom_emoji_id: TG_ICONS.MAP },
-    { text: 'Murojaat Yo‘llash', callback_data: 'nav_murojaat', icon_custom_emoji_id: TG_ICONS.WRITE }
+    { text: '22 Ta Tuman', callback_data: 'nav_districts', icon_custom_emoji_id: TG_ICONS.MAP, style: 'primary' },
+    { text: 'Murojaat Yo‘llash', callback_data: 'nav_murojaat', icon_custom_emoji_id: TG_ICONS.WRITE, style: 'primary' }
   ],
   [
-    { text: 'Rasmiy Portal', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.GLOBE },
-    { text: 'Loyiha Haqida', callback_data: 'nav_about', icon_custom_emoji_id: TG_ICONS.TARGET }
+    { text: 'Rasmiy Vebsayt', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.GLOBE, style: 'primary' },
+    { text: 'Loyiha Haqida', callback_data: 'nav_about', icon_custom_emoji_id: TG_ICONS.TARGET, style: 'primary' }
   ]
 ];
 
@@ -247,12 +247,12 @@ async function sendWelcome(chatId, fromName) {
 
 // Helper: Send News
 async function sendNews(chatId) {
-  const news = `${EMJ.NEWS} <b>«Hafta Nigohi» Dayjesti va Rasmiy Yangiliklar</b> ${EMJ.SPARKLES}\n\n` +
+  const news = `${EMJ.NEWS} <b>«Hafta Sarasi» — Viloyat Maktablari Xabarlari</b> ${EMJ.SPARKLES}\n\n` +
                `Toshkent viloyati umumta’lim muassasalarida hafta davomida o‘tkazilgan eng muhim ta’limiy va ma’rifiy voqealar:\n\n` +
-               `${EMJ.GRADUATION} <b>Namunali ochiq darslar:</b> 22 ta tuman maktablarida ilg‘or pedagogik texnologiyalar amaliyotga kiritilmoqda.\n` +
+               `${EMJ.GRADUATION} <b>Namunali ochiq darslar:</b> 22 ta tuman maktablarida ilg‘or ta’lim usullari amaliyotga kiritilmoqda.\n` +
                `${EMJ.MEDAL_GOLD} <b>Iqtidorlar tanlovi:</b> Fan olimpiadalari va dasturlash bo‘yicha viloyat bosqichlari saralanmoqda.\n` +
-               `${EMJ.CAMERA_VIDEO} <b>Maktab media-burchaklari:</b> O‘quvchilar tomonidan tayyorlangan haftalik video-dayjestlar efirga uzatilmoqda.\n\n` +
-               `${EMJ.GLOBE} Barcha lavhalar va tahliliy reportajlar rasmiy portalda to‘liq yoritilmoqda:`;
+               `${EMJ.CAMERA_VIDEO} <b>Maktab media-burchaklari:</b> O‘quvchilar tomonidan tayyorlangan haftalik tahliliy videolavhalar uzatilmoqda.\n\n` +
+               `${EMJ.GLOBE} Barcha lavhalar va yangiliklar rasmiy elektron sahifada to‘liq yoritilmoqda:`;
 
   await callTelegram('sendMessage', {
     chat_id: chatId,
@@ -260,7 +260,7 @@ async function sendNews(chatId) {
     parse_mode: 'HTML',
     reply_markup: {
       inline_keyboard: [
-        [{ text: 'Portalda to‘liq ko‘rish', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.GLOBE }],
+        [{ text: 'Saytda to‘liq ko‘rish', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.GLOBE }],
         [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home', icon_custom_emoji_id: TG_ICONS.HOME }]
       ]
     }
@@ -272,10 +272,10 @@ async function sendCyber(chatId) {
   const cyber = `${EMJ.SHIELD} <b>«Kiber-Qalqon» — Raqamli Xavfsizlik Madaniyati</b> ${EMJ.ALERT}\n\n` +
                 `O‘quvchilar, ustozlar va ota-onalar uchun internet tarmog‘ida xavfsiz bo‘lishning 4 oltin qoidasi:\n\n` +
                 `${EMJ.NUM_1} <b>Shaxsiy ma’lumotlarni asrang:</b> Hech qachon bank kartalari, SMS-kodlar va parollarni begona guruh yoki botlarga kiritmang ${EMJ.LOCK}\n\n` +
-                `${EMJ.NUM_2} <b>Soxta (fishing) havolalardan ehtiyot bo‘ling:</b> «Bepul telegram premium», «Katta pul yutug‘i» mazmunidagi havolalarni ochmang ${EMJ.DANGER}\n\n` +
+                `${EMJ.NUM_2} <b>Soxta (fishing) havolalardan ehtiyot bo‘ling:</b> «Bepul telegram premium», «Katta pul yutug‘i» mazmunidagi soxta havolalarni ochmang ${EMJ.DANGER}\n\n` +
                 `${EMJ.NUM_3} <b>Fikr filtrlari va feyk xabarlar:</b> Shov-shuvli xabarlarni faqat rasmiy davlat va ta’lim kanallaridan tekshiring ${EMJ.IDEA}\n\n` +
                 `${EMJ.NUM_4} <b>Yot mafkuraviy guruhlardan saqlaning:</b> Ijtimoiy tarmoqlardagi noma’lum kimsalar bilan xavfli muloqotga kirmang ${EMJ.SHIELD}\n\n` +
-                `${EMJ.CHECK} <i>«Kiber-Qalqon» — viloyat yoshlarining mustahkam raqamli immunitetidir!</i>`;
+                `${EMJ.CHECK} <i>«Kiber-Qalqon» — viloyat yoshlarining mustahkam raqamli himoyasidir!</i>`;
 
   await callTelegram('sendMessage', {
     chat_id: chatId,
@@ -295,7 +295,7 @@ async function sendHeroes(chatId) {
   const heroes = `${EMJ.TROPHY} <b>«Viloyat Iftixorlari» — Yoshlar Salohiyati</b> ${EMJ.CROWN}\n\n` +
                  `Toshkent viloyati maktablarining respublika va xalqaro miqyosdagi faxrlari:\n\n` +
                  `${EMJ.MEDAL_GOLD} <b>Fan olimpiadalari g‘oliblari:</b> Xalqaro matematika, fizika, kimyo va biologiya musobaqalarida zafar quchgan o‘quvchilar.\n` +
-                 `${EMJ.DEV} <b>IT va Dasturlash yetakchilari:</b> Sun’iy intellekt, robototexnika va veb-ishlanmalar yaratuvchilari.\n` +
+                 `${EMJ.DEV} <b>IT va Dasturlash yetakchilari:</b> Sun’iy intellekt, robot texnologiyalari va veb-ishlanmalar yaratuvchilari.\n` +
                  `${EMJ.SPORT} <b>Sport chempionlari:</b> Jahon va Osiyo chempionatlarida yurtimiz bayrog‘ini ko‘targan maktab yoshlari.\n` +
                  `${EMJ.BOOK} <b>«Zukko Kitobxon»:</b> Badiiy adabiyot va kitobxonlik tanlovlari sovrindorlari.\n` +
                  `${EMJ.GRADUATION} <b>Ilg‘or ustozlar:</b> Yangi avlodni tarbiyalayotgan fidoyi ustoz-pedagoglar.\n\n` +
@@ -307,7 +307,7 @@ async function sendHeroes(chatId) {
     parse_mode: 'HTML',
     reply_markup: {
       inline_keyboard: [
-        [{ text: 'Portalda iftixorlar ro‘yxati', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.TROPHY }],
+        [{ text: 'Saytda iftixorlar ro‘yxati', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.TROPHY }],
         [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home', icon_custom_emoji_id: TG_ICONS.HOME }]
       ]
     }
@@ -316,11 +316,11 @@ async function sendHeroes(chatId) {
 
 // Helper: Send Podcast
 async function sendPodcast(chatId) {
-  const podcast = `${EMJ.STUDIO_MIC} <b>«Focus Suhbat» — Ma’rifiy Podkastlar</b> ${EMJ.HEADPHONES}\n\n` +
+  const podcast = `${EMJ.STUDIO_MIC} <b>«Focus Suhbat» — Ma’rifiy Ovozli Muloqotlar</b> ${EMJ.HEADPHONES}\n\n` +
                   `Ziyolilar, faxriy ustozlar, namunali yosh liderlar va soha mutaxassislari bilan davra suhbatlari:\n\n` +
                   `${EMJ.GRADUATION} <b>«Ustozga Ehtirom»:</b> Fidoyi pedagoglarning ibratli hayot yo‘li va mahorat darslari.\n` +
                   `${EMJ.MEDAL_GOLD} <b>«Chempionlar Yo‘li»:</b> G‘olib o‘quvchilarning mashaqqatli mehnati va muvaffaqiyat sirlari.\n` +
-                  `${EMJ.LAPTOP} <b>«Kelajak Kasblari»:</b> SMM, mobilografiya, montaj va dasturlash bo‘yicha bepul amaliy qo‘llanmalar.\n\n` +
+                  `${EMJ.LAPTOP} <b>«Kelajak Kasblari»:</b> Ijtimoiy tarmoqlar, mobil tasvirga olish, montaj va dasturlash bo‘yicha bepul amaliy qo‘llanmalar.\n\n` +
                   `${EMJ.CAMERA_VIDEO} Suhbatlar viloyat maktablarining rasmiy media guruhlari tomonidan tasvirga olinadi.`;
 
   await callTelegram('sendMessage', {
@@ -329,7 +329,7 @@ async function sendPodcast(chatId) {
     parse_mode: 'HTML',
     reply_markup: {
       inline_keyboard: [
-        [{ text: 'Portalda podkastlarni ko‘rish', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.STUDIO_MIC }],
+        [{ text: 'Saytda suhbatlarni ko‘rish', url: WEBSITE_URL, icon_custom_emoji_id: TG_ICONS.STUDIO_MIC }],
         [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home', icon_custom_emoji_id: TG_ICONS.HOME }]
       ]
     }
