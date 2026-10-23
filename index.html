@@ -37,9 +37,7 @@
     <div class="container">
       <nav class="navbar liquid-glass">
         <a href="#hero" class="nav-brand">
-          <div class="brand-symbol">
-            <i class="fas fa-bullseye"></i>
-          </div>
+          <img src="assets/img/logo.jpg" alt="Focus Media" class="brand-logo-circle" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(0, 240, 255, 0.4);">
           <div class="brand-text">
             <span class="brand-name">FOCUS MEDIA</span>
             <span class="brand-sub">Toshkent Viloyati</span>
@@ -52,7 +50,6 @@
           <a href="#tuzilma" class="nav-link">Tashkiliy Tuzilma</a>
           <a href="#yol-xaritasi" class="nav-link">Yo'l Xaritasi</a>
           <a href="#kpi" class="nav-link">KPI</a>
-          <a href="#hududlar" class="nav-link">Viloyat Qamrovi</a>
         </div>
 
         <div class="nav-actions">
@@ -80,7 +77,6 @@
     <a href="#tuzilma" class="mobile-link">03. Tashkiliy Tuzilma</a>
     <a href="#yol-xaritasi" class="mobile-link">04. Yo'l Xaritasi</a>
     <a href="#kpi" class="mobile-link">05. Maqsadli Indikatorlar (KPI)</a>
-    <a href="#hududlar" class="mobile-link">06. 22 Ta Hudud Reestri</a>
     <a href="https://t.me/focusmedia4_bot" target="_blank" rel="noopener noreferrer" class="btn-glass-accent w-full" style="text-align: center; justify-content: center; margin-bottom: 0.5rem;">
       <i class="fab fa-telegram-plane"></i> Telegram Bot (@focusmedia4_bot)
     </a>
@@ -524,71 +520,7 @@
     </section>
 
     <!-- ==========================================================================
-         SECTION 6: 22 TA TUMAN VA SHAHAR TAYANCH BAZALARI REESTRI
-         ========================================================================== -->
-    <section class="section-block" id="hududlar">
-      <div class="container">
-        <div class="section-heading-wrap">
-          <div class="section-tag liquid-glass-pill">HUDUDLAR QAMROVI</div>
-          <h2 class="section-title">22 Ta Tuman va Shahar Reestri</h2>
-          <p class="section-subtitle">Loyiha joriy etiladigan Toshkent viloyati hududiy birliklari va namunali maktablar bazasi.</p>
-        </div>
-
-        <div class="registry-card liquid-glass">
-          <div class="registry-top">
-            <div class="registry-search">
-              <i class="fas fa-search"></i>
-              <input type="text" id="district-filter" placeholder="Tuman yoki shaharni qidiring...">
-            </div>
-            <div class="registry-stats">
-              Jami: <strong>22 ta hudud</strong> | <strong>900+ maktab</strong>
-            </div>
-          </div>
-
-          <div class="table-wrap">
-            <table class="minimal-table" id="districts-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Hudud Nomi</th>
-                  <th>Hudud Toifasi</th>
-                  <th>Maktablar Soni</th>
-                  <th>Namunali Maktab Bazasi</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>01</td><td><strong>Nurafshon shahri</strong></td><td>Viloyat markazi</td><td>12 ta</td><td>1-sonli ixtisoslashtirilgan maktab</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>02</td><td><strong>Chirchiq shahri</strong></td><td>Sanoat va ta'lim</td><td>26 ta</td><td>9-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>03</td><td><strong>Angren shahri</strong></td><td>Sanoat shahri</td><td>34 ta</td><td>14-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>04</td><td><strong>Olmaliq shahri</strong></td><td>Kon-metallurgiya</td><td>24 ta</td><td>5-sonli ixtisoslashtirilgan maktab</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>05</td><td><strong>Bekobod shahri</strong></td><td>Metallurgiya</td><td>18 ta</td><td>16-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>06</td><td><strong>Yangiyo‘l shahri</strong></td><td>Shaharcha</td><td>15 ta</td><td>2-sonli maktab-internat</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>07</td><td><strong>Ohangaron shahri</strong></td><td>Sanoat shaharchasi</td><td>11 ta</td><td>3-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>08</td><td><strong>Zangiota tumani</strong></td><td>Yirik tuman</td><td>48 ta</td><td>21-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>09</td><td><strong>Qibray tumani</strong></td><td>Ilmiy-madaniy</td><td>42 ta</td><td>7-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>10</td><td><strong>Bo‘stonliq tumani</strong></td><td>Turizm va tog'oldi</td><td>54 ta</td><td>1-sonli ixtisoslashgan maktab</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>11</td><td><strong>Parkent tumani</strong></td><td>Agrosanoat va turizm</td><td>38 ta</td><td>11-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>12</td><td><strong>Toshkent tumani</strong></td><td>Poytaxtoldi hudud</td><td>40 ta</td><td>25-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>13</td><td><strong>O‘rtachirchiq tumani</strong></td><td>Qishloq xo'jaligi</td><td>56 ta</td><td>4-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>14</td><td><strong>Yuqorichirchiq tumani</strong></td><td>Agrosanoat</td><td>45 ta</td><td>8-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>15</td><td><strong>Quyichirchiq tumani</strong></td><td>Agrosanoat</td><td>39 ta</td><td>12-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>16</td><td><strong>Chinoz tumani</strong></td><td>Logistika va agro</td><td>46 ta</td><td>18-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>17</td><td><strong>Yangiyo‘l tumani</strong></td><td>Agrosanoat</td><td>51 ta</td><td>31-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>18</td><td><strong>Bekobod tumani</strong></td><td>Agrosanoat</td><td>55 ta</td><td>6-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>19</td><td><strong>Bo‘ka tumani</strong></td><td>Agrohudud</td><td>47 ta</td><td>9-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>20</td><td><strong>Piskent tumani</strong></td><td>Agrohudud</td><td>33 ta</td><td>2-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>21</td><td><strong>Oqqo‘rg‘on tumani</strong></td><td>Agrohudud</td><td>36 ta</td><td>15-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-                <tr><td>22</td><td><strong>Ohangaron tumani</strong></td><td>Tog'oldi va sanoat</td><td>29 ta</td><td>10-sonli umumta'lim maktabi</td><td><span class="status-pill">Namunali maktab</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SECTION 7: BOSH G'OYA VA XULOSA (SLIDES 11, 12)
+         SECTION 6: BOSH G'OYA VA XULOSA
          ========================================================================== -->
     <section class="section-block" id="xulosa">
       <div class="container">
@@ -626,8 +558,8 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-inner liquid-glass">
-        <span>© 2026 FOCUS MEDIA — Toshkent Viloyati Umumta’lim Maktablari Loyihasi.</span>
-        <span>Toshkent Viloyati Hokimligi & Xalq Ta'limi Boshqarmasi Hamkorligida</span>
+        <span>© 2026 FOCUS MEDIA — Toshkent Viloyati Umumta’lim Maktablari Yagona Raqamli Tizimi.</span>
+        <span>Rasmiy aloqa: Telegram @Torabek_Abduvoitov  |  Bot: @focusmedia4_bot</span>
       </div>
     </div>
   </footer>
