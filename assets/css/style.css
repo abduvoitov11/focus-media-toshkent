@@ -712,7 +712,7 @@ body {
 .timeline-row {
   padding: 1.5rem 1.75rem;
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 115px 1fr;
   gap: 1.75rem;
   align-items: center;
 }
@@ -745,6 +745,7 @@ body {
   font-weight: 700;
   color: var(--accent-cyan);
   margin-top: 0.2rem;
+  letter-spacing: 0.08em;
 }
 
 .t-head {
