@@ -528,7 +528,7 @@ async function sendAppeal(chatId, messageId = null, isPhoto = false) {
 
 async function sendAbout(chatId, messageId = null, isPhoto = false) {
   const about = `${EMJ.TARGET} <b>«Focus Media» Loyihasi Bosh G‘oyasi</b> ${EMJ.CROWN}\n\n` +
-                `<i>«Focus Media — bu shunchaki axborot kanali emas, balki Toshkent viloyati yoshlarining intellektual salohiyati, vatanparvarligi va zamonaviy imijini namoyon etuvchi raqamli ko‘zgudir!»</i>\n\n` +
+                `<i>«Focus Media — bu shunchaki axborot kanali emas, balki O‘zbekiston yoshlarining intellektual salohiyati, vatanparvarligi va zamonaviy imijini namoyon etuvchi raqamli ko‘zgudir!»</i>\n\n` +
                 `${EMJ.MAP} <b>Hududiy qamrov:</b> Toshkent viloyatining barcha 22 ta tuman va shahri (900+ maktab)\n` +
                 `${EMJ.TEAM} <b>Mas’ullar:</b> Maktab media yetakchilari va iqtidorli o‘quvchilar jamoasi\n` +
                 `${EMJ.LIGHTNING} <b>Asosiy maqsad:</b> Ochiq, xavfsiz va ta’sirchan milliy axborot makonini yaratish.\n\n` +
