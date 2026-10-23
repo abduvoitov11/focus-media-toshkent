@@ -164,13 +164,25 @@ const DISTRICTS_DATA = {
   ohangaron_t: { name: 'Ohangaron tumani', schools: '29 ta', model: '10-sonli umumta’lim maktabi', type: 'Tog‘-kon va chorvachilik' }
 };
 
-// Main Reply Keyboard
+// Main Reply Keyboard (With Telegram Premium Animated Custom Icons on Each Button)
 const MAIN_KEYBOARD = {
   keyboard: [
-    [{ text: '📰 Yangiliklar & Dayjestlar' }, { text: '🛡️ «Kiber-Qalqon»' }],
-    [{ text: '🏆 Viloyat Iftixorlari' }, { text: '🎙️ «Focus Suhbat»' }],
-    [{ text: '🗺️ 22 Ta Tuman Maktablari' }, { text: '📝 Murojaat Yo‘llash' }],
-    [{ text: '🌐 Rasmiy Vebsayt' }, { text: '🎯 Loyiha Haqida' }]
+    [
+      { text: 'Yangiliklar & Dayjestlar', icon_custom_emoji_id: TG_ICONS.NEWS },
+      { text: '«Kiber-Qalqon»', icon_custom_emoji_id: TG_ICONS.SHIELD }
+    ],
+    [
+      { text: 'Viloyat Iftixorlari', icon_custom_emoji_id: TG_ICONS.TROPHY },
+      { text: '«Focus Suhbat»', icon_custom_emoji_id: TG_ICONS.STUDIO_MIC }
+    ],
+    [
+      { text: '22 Ta Tuman Maktablari', icon_custom_emoji_id: TG_ICONS.MAP },
+      { text: 'Murojaat Yo‘llash', icon_custom_emoji_id: TG_ICONS.WRITE }
+    ],
+    [
+      { text: 'Rasmiy Vebsayt', icon_custom_emoji_id: TG_ICONS.GLOBE },
+      { text: 'Loyiha Haqida', icon_custom_emoji_id: TG_ICONS.TARGET }
+    ]
   ],
   resize_keyboard: true,
   is_persistent: true
