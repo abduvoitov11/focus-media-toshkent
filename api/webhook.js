@@ -14,6 +14,36 @@ const WEBSITE_URL = 'https://abduvoitov11.github.io/focus-media-toshkent/';
 const ADMIN_USERNAME = 'Torabek_Abduvoitov';
 const ADMIN_CHAT_ID = '6291811673';
 const APPEALS_FILE = '/tmp/focus_media_appeals.json';
+const REPLY_MAP_FILE = '/tmp/focus_media_reply_map.json';
+const PENDING_REPLY_FILE = '/tmp/focus_media_pending_reply.json';
+
+let replyMap = {};
+let adminPendingReply = null;
+
+try {
+  if (fs.existsSync(REPLY_MAP_FILE)) {
+    replyMap = JSON.parse(fs.readFileSync(REPLY_MAP_FILE, 'utf8') || '{}');
+  }
+} catch (_) {}
+
+try {
+  if (fs.existsSync(PENDING_REPLY_FILE)) {
+    adminPendingReply = JSON.parse(fs.readFileSync(PENDING_REPLY_FILE, 'utf8') || 'null');
+  }
+} catch (_) {}
+
+function saveReplyMap() {
+  try {
+    fs.writeFileSync(REPLY_MAP_FILE, JSON.stringify(replyMap));
+  } catch (_) {}
+}
+
+function saveAdminPendingReply(data) {
+  adminPendingReply = data;
+  try {
+    fs.writeFileSync(PENDING_REPLY_FILE, JSON.stringify(data));
+  } catch (_) {}
+}
 
 let botAppeals = [];
 try {
@@ -563,6 +593,53 @@ async function sendDistrictsMenu(chatId, messageId = null, isPhoto = false) {
 }
 
 // ----------------------------------------------------------------------------
+// Admin Direct Reply Delivery (Foydalanuvchiga bot orqali rasmiy javob yuborish)
+// ----------------------------------------------------------------------------
+async function deliverAdminReply(targetChatId, ticketNum, adminText, adminMsgId) {
+  const replyCard =
+    `${EMJ.MAIL} <b>«Focus Media» Ma’muriyatidan Rasmiy Javob</b> ${EMJ.SPARKLES}\n\n` +
+    `🎫 <b>Sizning murojaatingiz:</b> № FM-${ticketNum}\n` +
+    `👤 <b>Mas’ul rahbar:</b> @${ADMIN_USERNAME}\n` +
+    `📅 <b>Javob berilgan vaqt:</b> ${new Date().toLocaleString('uz-UZ', { timeZone: 'Asia/Tashkent' })}\n\n` +
+    `💬 <b>Javob matni:</b>\n` +
+    `<blockquote>${escapeHtml(adminText)}</blockquote>\n\n` +
+    `${EMJ.CHECK} <i>Taklif va tashabbusingiz uchun minnatdorchilik bildiramiz!</i>`;
+
+  const userKb = [
+    [{ text: 'Yana murojaat yo‘llash', callback_data: 'action_murojaat' }],
+    [{ text: 'Bosh menyuga qaytish', callback_data: 'nav_home' }]
+  ];
+
+  const sendRes = await callTelegram('sendMessage', {
+    chat_id: targetChatId,
+    text: replyCard,
+    parse_mode: 'HTML',
+    reply_markup: { inline_keyboard: userKb }
+  });
+
+  if (sendRes && sendRes.ok) {
+    await callTelegram('sendMessage', {
+      chat_id: ADMIN_CHAT_ID,
+      text: `✅ <b>Javobingiz foydalanuvchiga muvaffaqiyatli yetkazildi!</b>\n\n` +
+            `🎫 <b>Chipta:</b> № FM-${ticketNum}\n` +
+            `👤 <b>Telegram ID:</b> <code>${targetChatId}</code>\n` +
+            `📝 <b>Yuborilgan javob matni:</b>\n<i>«${escapeHtml(adminText)}»</i>`,
+      parse_mode: 'HTML',
+      reply_to_message_id: adminMsgId
+    });
+    return true;
+  } else {
+    await callTelegram('sendMessage', {
+      chat_id: ADMIN_CHAT_ID,
+      text: `❌ <b>Javob yetkazilmadi!</b>\nFoydalanuvchi botni to‘xtatgan yoki bloklagan bo‘lishi mumkin (Sabab: ${sendRes?.description || 'Noma’lum'}).`,
+      parse_mode: 'HTML',
+      reply_to_message_id: adminMsgId
+    });
+    return false;
+  }
+}
+
+// ----------------------------------------------------------------------------
 // Handle Incoming Telegram Update
 // ----------------------------------------------------------------------------
 async function handleUpdate(update) {
@@ -578,6 +655,41 @@ async function handleUpdate(update) {
     const data = cb.data || '';
 
     await callTelegram('answerCallbackQuery', { callback_query_id: cb.id });
+
+    // Admin replies via Inline Button
+    if (data.startsWith('reply_')) {
+      if (chatId.toString() !== ADMIN_CHAT_ID) {
+        await callTelegram('answerCallbackQuery', {
+          callback_query_id: cb.id,
+          text: '⛔ Faqat loyiha rahbari javob qaytara oladi!',
+          show_alert: true
+        });
+        return;
+      }
+
+      const parts = data.split('_');
+      const targetUser = parts[1];
+      const targetTicket = parts[2];
+
+      saveAdminPendingReply({
+        targetChatId: targetUser,
+        ticketNum: targetTicket,
+        time: Date.now()
+      });
+
+      await callTelegram('sendMessage', {
+        chat_id: ADMIN_CHAT_ID,
+        text: `✍️ <b>№ FM-${targetTicket} raqamli murojaatga javob yozish:</b>\n\n` +
+              `👤 Qabul qiluvchi: <code>${targetUser}</code>\n\n` +
+              `<i>Iltimos, ushbu xabarga javoban foydalanuvchiga yubormoqchi bo‘lgan matningizni yozib yuboring.\nBekor qilish uchun: /cancel deb yozing.</i>`,
+        parse_mode: 'HTML',
+        reply_markup: {
+          force_reply: true,
+          input_field_placeholder: 'Javob matnini yozing...'
+        }
+      });
+      return;
+    }
 
     if (data === 'nav_home') {
       const fromName = cb.from.first_name || 'Foydalanuvchi';
@@ -671,10 +783,101 @@ async function handleUpdate(update) {
     let targetMsgId = prev?.messageId || null;
     let isPhoto = prev?.isPhoto || false;
 
-    // Delete user's incoming message so the chat window remains 100% clean
-    try {
-      await callTelegram('deleteMessage', { chat_id: chatId, message_id: msg.message_id });
-    } catch (_) {}
+    // Delete user's incoming message so the chat window remains 100% clean (only for non-admin)
+    if (chatId.toString() !== ADMIN_CHAT_ID) {
+      try {
+        await callTelegram('deleteMessage', { chat_id: chatId, message_id: msg.message_id });
+      } catch (_) {}
+    }
+
+    // ========================================================================
+    // ADMIN DIRECT REPLY LOGIC (3 xil qulay usulda javob qaytarish!)
+    // ========================================================================
+    if (chatId.toString() === ADMIN_CHAT_ID) {
+      // 1-usul: Telegramda xabarga "Reply" (Ответить) qilish
+      if (msg.reply_to_message && msg.reply_to_message.text) {
+        const quotedText = msg.reply_to_message.text;
+        const msgId = msg.reply_to_message.message_id;
+
+        let targetId = replyMap[msgId]?.targetChatId;
+        let ticket = replyMap[msgId]?.ticketNum;
+
+        if (!targetId) {
+          const idMatch = quotedText.match(/Telegram ID:\s*<code>?([0-9]+)<?/i);
+          if (idMatch) targetId = idMatch[1];
+        }
+
+        if (!ticket) {
+          const tMatch = quotedText.match(/FM-([0-9]+)/i);
+          if (tMatch) ticket = tMatch[1] || '00000';
+        }
+
+        if (targetId && !text.startsWith('/')) {
+          await deliverAdminReply(targetId, ticket, text, msg.message_id);
+          return;
+        }
+      }
+
+      // 2-usul: "Bot orqali javob yozish" tugmasi orqali kutish rejimi
+      if (adminPendingReply && adminPendingReply.targetChatId) {
+        if (text === '/cancel' || text.toLowerCase() === 'bekor qilish') {
+          saveAdminPendingReply(null);
+          await callTelegram('sendMessage', {
+            chat_id: ADMIN_CHAT_ID,
+            text: '🚫 <i>Javob yozish jarayoni bekor qilindi.</i>',
+            parse_mode: 'HTML'
+          });
+          return;
+        }
+
+        if (!text.startsWith('/')) {
+          const { targetChatId, ticketNum } = adminPendingReply;
+          saveAdminPendingReply(null);
+          await deliverAdminReply(targetChatId, ticketNum, text, msg.message_id);
+          return;
+        }
+      }
+
+      // 3-usul: /javob <ID yoki Chipta> <Javob matni>
+      if (text.startsWith('/javob ') || text.startsWith('/reply ')) {
+        const raw = text.replace(/^\/(javob|reply)\s+/, '').trim();
+        const firstSpace = raw.indexOf(' ');
+        if (firstSpace === -1) {
+          await callTelegram('sendMessage', {
+            chat_id: ADMIN_CHAT_ID,
+            text: `⚠️ <b>Noto‘g‘ri format!</b>\n\nTo‘g‘ri format:\n<code>/javob &lt;Chipta raqami yoki ID&gt; &lt;Javob matni&gt;</code>\n\nMasalan:\n<code>/javob 54321 Taklifingiz qabul qilindi, rahmat!</code>`,
+            parse_mode: 'HTML'
+          });
+          return;
+        }
+
+        const targetIdentifier = raw.substring(0, firstSpace).trim();
+        const answerText = raw.substring(firstSpace + 1).trim();
+
+        let targetUser = null;
+        let ticketNum = targetIdentifier;
+
+        const foundAppeal = botAppeals.find(a => a.ticket.includes(targetIdentifier) || (a.id && a.id.toString() === targetIdentifier));
+        if (foundAppeal) {
+          targetUser = foundAppeal.id;
+          ticketNum = foundAppeal.ticket.replace(/[^0-9]/g, '');
+        } else if (/^\d{6,15}$/.test(targetIdentifier)) {
+          targetUser = targetIdentifier;
+        }
+
+        if (!targetUser) {
+          await callTelegram('sendMessage', {
+            chat_id: ADMIN_CHAT_ID,
+            text: `❌ <b>Murojaat topilmadi!</b> «${escapeHtml(targetIdentifier)}» raqamli murojaat jurnaldan topilmadi.`,
+            parse_mode: 'HTML'
+          });
+          return;
+        }
+
+        await deliverAdminReply(targetUser, ticketNum, answerText, msg.message_id);
+        return;
+      }
+    }
 
     // Admin Command: /stat, /admin, /users (Live User Count)
     if (text === '/stat' || text === '/admin' || text === '/users') {
@@ -833,18 +1036,28 @@ async function handleUpdate(update) {
 
       const adminInlineKb = [
         [
+          { text: '✍️ Bot orqali javob berish', callback_data: `reply_${chatId}_${ticketNum}` },
           msg.from.username
-            ? { text: '💬 Foydalanuvchiga yozish', url: `https://t.me/${msg.from.username}` }
+            ? { text: '💬 Profilni ochish', url: `https://t.me/${msg.from.username}` }
             : { text: '💬 Profilni ochish', url: `tg://user?id=${chatId}` }
         ]
       ];
 
-      await callTelegram('sendMessage', {
+      const sendRes = await callTelegram('sendMessage', {
         chat_id: ADMIN_CHAT_ID,
         text: adminAlertText,
         parse_mode: 'HTML',
         reply_markup: { inline_keyboard: adminInlineKb }
       });
+
+      if (sendRes && sendRes.ok && sendRes.result?.message_id) {
+        replyMap[sendRes.result.message_id] = {
+          targetChatId: chatId,
+          ticketNum: ticketNum,
+          senderName: senderFullName
+        };
+        saveReplyMap();
+      }
     } catch (adminErr) {
       console.error('Failed to forward appeal to admin:', adminErr);
     }
